@@ -1,0 +1,317 @@
+@media only screen and (max-width: 2400px) and (min-width: 1600px) {}
+
+
+
+// fix POPUP login VNE
+.mfp-myvne .mfp-iframe-scaler {
+	min-height: 445px;
+}
+
+.mfp-myvne.mfp-wrap {
+	z-index: 100001;
+}
+
+.banner-top-home {
+	overflow: hidden;
+}
+
+.mfp-myvne .mfp-iframe-holder .mfp-content {
+	line-height: 0;
+	width: 100%;
+	max-width: 768px;
+}
+
+.hidden-mb {
+	display: block !important
+}
+
+.hidden-pc {
+	display: none !important
+}
+
+@media (max-width: 991px) {
+
+	.mb60 {
+		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.view-pc {
+		display: none;
+	}
+
+	.view-mobile {
+		display: block;
+	}
+
+	.top_bar {
+		.date {
+			display: none
+		}
+
+		.form_log {
+			&>li {
+				margin-right: 6px;
+				padding-left: 10px;
+			}
+
+			.user {
+				.name {
+					max-width: 100px;
+					overflow: hidden;
+					margin-top: -2px;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+
+	//GIAI ĐOẠN 1
+	.title_line,
+	.title_line2 {
+		margin-bottom: 20px;
+	}
+
+	//END GIAI ĐOẠN 1
+}
+
+
+@media (max-width: 600px) {
+
+	.hidden-mb,
+	.d-sm-none {
+		display: none !important
+	}
+
+	.hidden-pc {
+		display: block !important
+	}
+
+	.mfp-close {
+		right: -6px
+	}
+
+	//GIAI ĐOẠN 1
+	.title_line {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.popup_awards {
+		.title_line {
+			font-size: 24px;
+		}
+	}
+
+	//END GIAI ĐOẠN 1
+	.mfp-myvne {
+		.mfp-container {
+			padding: 0 !important
+		}
+	}
+
+	.mfp-myvne .mfp-iframe-scaler {
+		min-height: 100vh;
+		background: #fff;
+	}
+
+	.mfp-myvne button.mfp-close {
+		font-size: 35px;
+		font-family: -webkit-body;
+		color: #BDBDBD;
+		top: 0px !important;
+		right: 0px;
+		background: none !important;
+		z-index: 2;
+	}
+}
+
+@media (max-width: 480px) {
+	.top_bar {
+		.logo {
+			width: 132px;
+			margin: 1px 0 0 30px;
+		}
+
+		.form_log {
+			margin: 5px 0 0 0px;
+
+			&>li {
+				padding-left: 6px;
+				margin-right: 0;
+
+				a {
+					font-size: 13px
+				}
+			}
+
+			.user {
+				.name {
+					display: none
+				}
+			}
+		}
+
+		.form_log>li .icon-user img {
+			width: 25px;
+			height: 25px;
+			margin: -5px 2px 0 0;
+		}
+	}
+
+	//GIAI ĐOẠN 1
+
+}
+
+@media (max-width: 340px) {
+
+	.top_bar {
+		.logo {
+			display: none;
+		}
+
+		.logo_mobile {
+			display: inline-block;
+			margin: 0 0 0 30px;
+		}
+	}
+}
+
+//--ADS FIX
+
+.container {
+	&.mb30 {
+		margin-bottom: 0;
+	}
+
+	&.pb20 {
+		padding-bottom: 0;
+	}
+
+	.banner-ads {
+
+		&>div,
+		&>img,
+		&>iframe {
+			@media screen and (max-width: 600px) {
+				margin-bottom: 20px;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	.box-category {
+		.banner-ads {
+
+			&>div,
+			&>img,
+			&>iframe {
+				margin-bottom: 0;
+
+				@media screen and (max-width: 600px) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.section_ads_300x250 {
+		background: #f7f7f7;
+		padding: 10px 0 !important;
+		border-top: 1px solid #e5e5e5;
+		margin-bottom: 20px;
+		clear: both;
+		display: flex;
+		width: 100%;
+
+		&.full-width {
+			width: calc(100% + 30px);
+			margin-left: -15px !important;
+			overflow: hidden;
+		}
+
+		.ads_content {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	.banner_mobile_300x250 {
+		width: 100%;
+
+		.text_ads {
+			margin-bottom: 8px !important;
+			font: 400 11px arial;
+			color: #828282;
+			text-align: center;
+			position: relative;
+			display: block;
+
+			.txt_qc {
+				display: inline-block;
+				position: relative;
+				padding-left: 21px;
+
+				&::before {
+					width: 16px;
+					height: 16px;
+					background: url(https://s1.vnecdn.net/vnexpress/restruct/c/v3383/v2/mobile_redesign/images/graphics/Advertising.svg) no-repeat 0 0;
+					content: "";
+					position: absolute;
+					top: -1px;
+					left: 0;
+				}
+			}
+		}
+	}
+
+	.ads_content {
+		text-align: center;
+	}
+
+	.eclick_ad_holder {
+		display: flex !important;
+		flex-wrap: wrap;
+		gap: 10px;
+		width: 100%;
+
+		.thumb-art {
+			width: 100% !important;
+			margin: 0 !important;
+			float: left;
+			order: 3;
+		}
+
+		.title-news {
+			margin: 0 !important;
+			font-size: 18px;
+			font-weight: bold;
+			order: 1;
+		}
+
+		.description {
+			margin: 0 !important;
+			order: 2;
+			font-size: 17px !important;
+
+			.meta-news {
+				display: inline-block;
+			}
+		}
+	}
+
+}
+
+//--END ADS FIX
+
+
+@media \0screen\,screen\9 {}

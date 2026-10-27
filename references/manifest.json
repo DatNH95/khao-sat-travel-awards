@@ -1,0 +1,207 @@
+{
+  "source": "HTML-PC.7z",
+  "sha256": "D64797BCB16A5D06FA4D8DD49BB563F7082BD4DFB7D065E8DD4AFB5DF0C2A738",
+  "extracted": [
+    {
+      "path": "references/HTML-PC/cap-nhat-thanh-cong.html",
+      "sha256": "98602653BB2CAF0316B3C0CDD397B0DEE39B47F72B5E2792204E05F967C179B1"
+    },
+    {
+      "path": "references/HTML-PC/chinh-sua-ho-so.html",
+      "sha256": "C524EDA8944EE2DEF0BB824E1DE5578D7A7399E9C613FCA5F5C10AC95ED3564D"
+    },
+    {
+      "path": "references/HTML-PC/dang-ky-de-cu.html",
+      "sha256": "FA999387F72D2606ED57324A7D43EAF0A413AD685F858FE5C55923C8010A9C80"
+    },
+    {
+      "path": "references/HTML-PC/detail.html",
+      "sha256": "CBC7B37FDCF0CBC6F5A899DA6451E9240359D67F703CCDF9491690093CF55F78"
+    },
+    {
+      "path": "references/HTML-PC/index.html",
+      "sha256": "4A03AB25FD8739283430A916202C5D39C06CD7F2EEEF1DAE28B4BCB5F984C833"
+    },
+    {
+      "path": "references/HTML-PC/lightbox.html",
+      "sha256": "17A9AEDA86835EDB560D194EEDFB2B8B5CAF0F6FB8EE8AAFACA592310CDC2D85"
+    },
+    {
+      "path": "references/HTML-PC/thanh-cong.html",
+      "sha256": "600ECFF6F03487DCC4F189E0F9811EAF0A6F564A9845808C917E31ED85F18708"
+    },
+    {
+      "path": "references/HTML-PC/the-le.html",
+      "sha256": "2A2C5B94DF5BA1DD84472D1A8C4E12EA57A1C9C49CDAAD6CD0C504B77AD025C2"
+    },
+    {
+      "path": "references/HTML-PC/tin-tuc.html",
+      "sha256": "B800B3BE7BC3E3000EE4E50D47401E02B681CE78FE5B2E7C204AB1FB02B048DD"
+    },
+    {
+      "path": "references/HTML-PC/xac-nhan-cap-nhat.html",
+      "sha256": "44A29A6F7C1C9B3745BACD0ABBC594BC930A0E920BD6965A235939E29ACCBFB6"
+    },
+    {
+      "path": "references/HTML-PC/xac-nhan.html",
+      "sha256": "CC43A588831F7ED976D5BB84D076B0D4362A6B3505169F402A2D1E3710006916"
+    },
+    {
+      "path": "references/HTML-PC/app/page/cap-nhat-thanh-cong.html",
+      "sha256": "4F26B741A29A57FB2C58B71994B5628A564461699AFB26CAD00A3B0BEDCE1A10"
+    },
+    {
+      "path": "references/HTML-PC/app/page/chinh-sua-ho-so.html",
+      "sha256": "65466C9F3323B4B2B263FEE620FA460F239D2BFF049BF8492F6248A5869452C2"
+    },
+    {
+      "path": "references/HTML-PC/app/page/dang-ky-de-cu.html",
+      "sha256": "25D6B5A86081F88E91CDE19FEEC48C77F48C6F9DC36045BB5D4597D572EA0C78"
+    },
+    {
+      "path": "references/HTML-PC/app/page/detail.html",
+      "sha256": "9ECED5E8AFE7E3565F9E44B1B8717783DCC5D600687801770593AEB94DFFC4B8"
+    },
+    {
+      "path": "references/HTML-PC/app/page/index.html",
+      "sha256": "6E01918D73307FAEFC66ED7CC59213EB3970FC10F970DEB59984C1D8A7D84BD2"
+    },
+    {
+      "path": "references/HTML-PC/app/page/lightbox.html",
+      "sha256": "663DDB7D4CA1FB3A32DE5C469E2C72EF169DF173E1B685852131A3753F23DECD"
+    },
+    {
+      "path": "references/HTML-PC/app/page/thanh-cong.html",
+      "sha256": "B9FFC145C9D6A1B64DD0D16E277211B75B5141ADC65C4BE4C6A688A29871602E"
+    },
+    {
+      "path": "references/HTML-PC/app/page/the-le.html",
+      "sha256": "5E6C75B96D21A7E2D70A98C9392730354DE2C8217B86C3FE3617800B022C8E4A"
+    },
+    {
+      "path": "references/HTML-PC/app/page/tin-tuc.html",
+      "sha256": "61044EC102A753A7C40007DBF18DC1AA1BE0FAC7486D67C65E4C75889D5BB644"
+    },
+    {
+      "path": "references/HTML-PC/app/page/xac-nhan-cap-nhat.html",
+      "sha256": "606A1CC8E2E01AABA368674DC6FECEC8271F76F87B7F2D33C8ACB2C54FAE59C8"
+    },
+    {
+      "path": "references/HTML-PC/app/page/xac-nhan.html",
+      "sha256": "0488630D6C9360074E5E28AAB5BCFB35237BC978EF4B61C204AEBE5422C44107"
+    },
+    {
+      "path": "references/HTML-PC/app/template/main.html",
+      "sha256": "744574F88E6230138AF9BF7AC7864C6C9093904F8A0DA055C3181A3BE1B9188B"
+    },
+    {
+      "path": "references/HTML-PC/css/mobile_theme.css",
+      "sha256": "F90A209F09985B4464914159E9C122535BEE8C7D3279C7DD149A56701D6470B2"
+    },
+    {
+      "path": "references/HTML-PC/css/theme.css",
+      "sha256": "8D22DF6532BE97AA55D5C29FFBE789E3A5B102A635C4FABBEC77532904E3D45B"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/custom-detail.scss",
+      "sha256": "9A34D3FD009C19F71F131441BD8205438E81DB5C92DAC9FCB9FA1040D2C76B32"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/mobile_theme.scss",
+      "sha256": "B76899B6455FF5C0599D06201E4F7D41DCF6CA17806D90EA65DFF564359502C5"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/phaser2.scss",
+      "sha256": "417702057EF3186DE647E7DA1FAFDC30556AB89C7B1C52D7F50B2B16285F5B47"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/theme.scss",
+      "sha256": "AD19BE2DD46C6BCD6C107261CAE5BBDC835A82F02DDF4683D8D54F48F7F3A857"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/vote.scss",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/abstracts/_variables.scss",
+      "sha256": "F47ACDB529E441DB0DF6E92767831B42357C484C2844CB4FA327715323EF37F4"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_base.scss",
+      "sha256": "5DD9D8D39F61CC697B9D5E7AF3DDD179C71ABCEC367B3D27446D8FD6CF36EC04"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_font.scss",
+      "sha256": "1A73FC0F871AC4B85CE0C6AB63D687C36A612741147695F5019E19E1C2002CAF"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_grid.scss",
+      "sha256": "FB839E1F67288419281C9D6075BB0DC948E5A5B994DCE001467F960C7E911CE3"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_icon-vne.scss",
+      "sha256": "133580391B9D23E58C833ABE76D591A6B68A706086F0349F1609B5098DE68F86"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_reset.scss",
+      "sha256": "DCFF15531D3B9391F31D3AF8F67533D50D9E86A18037D1D6EC7867FF88CD7E5D"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_scrollbar.scss",
+      "sha256": "1CC3A933E94EDA0D06A970903C9010D171432E9C8B3F94676C5426A0F8202ABB"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/base/_tokens.scss",
+      "sha256": "A0998A8F0F9BE4A0FBAEF48773DED700A8C9E3541DF5B2AAEECE09E5F32F3089"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_animation.scss",
+      "sha256": "12470E547C1DF881915D5468CB9F0E41EBCCAD27CDAC2675D2847FF433836014"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_home.scss",
+      "sha256": "177A2D07AC165E4434EEB816782D2D7099FAC5ACB9B00367CD388C6A774A2BE6"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_ldp.scss",
+      "sha256": "71DDA44E1B8F1E7273967722450313BC46AB05FF8EACF5E99F578037E9A01378"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_menu-vne.scss",
+      "sha256": "0D3B86FA3BE1AC867D384B61036CE242FCBE72D12394BE67EF95D00566ADA518"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_news.scss",
+      "sha256": "AAEE943BB024A8B466CA5C24D811A3E8B0393EB912385CA2C9F599973D09C2B3"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_nomination.scss",
+      "sha256": "2509E8F9C866AE0F604D23615C10B621188E6A74F326B9A63E0C4BFF96846E0A"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_popup.scss",
+      "sha256": "53F001F24FFD6A9343688A0EB044B925FF72BBAD362ADD45F14EB8D84433C833"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_rules.scss",
+      "sha256": "0D0D5BC79CDCED1B2C51253224A9056AF16D6E5E5A4FB7CA5634F83DEC35AEED"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_swiper.scss",
+      "sha256": "A7998C618351C538C5B66336862B9601B56E335481C8054B5E52E8E28ECE5AF0"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/components/_taskbar-myvne.scss",
+      "sha256": "DEE24740AD07F44A6398C39F2F6824425BEA1CFC89FA9D65FDEADF2EAB13ECDC"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/layout/_footer.scss",
+      "sha256": "08C9986A569ED4C545AFDC3F3ED344D18A768E0955A65C75B3152779F8B59835"
+    },
+    {
+      "path": "references/HTML-PC/css/scss/layout/_header.scss",
+      "sha256": "8C0C87E8F2579446C6D49D982E2DC327E38CFBA277F20972E96E9AB2C44D0AA6"
+    }
+  ],
+  "purpose": "Read-only HTML/CSS structure reference; never imported or executed by the app."
+}

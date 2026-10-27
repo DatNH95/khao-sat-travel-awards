@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Ha Noi",
+    "file": "ha-noi.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2017-06/vietnam-travel-5.jpg?itok=S0kyMyUm",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Hue",
+    "file": "hue.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2021-05/Hue%20Travel%20Guide%20Vietnam%20Tourism_0.jpg?itok=_QJzR0nE",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Ha Long",
+    "file": "ha-long.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2017-06/visitvietnam-3.jpg?itok=76-AgMhI",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Da Nang",
+    "file": "da-nang.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2018-10/danang%20travel%20guide.jpg?itok=GirnBHLp",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Phu Quoc",
+    "file": "phu-quoc.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2021-05/Phu%20Quoc%20Travel%20Guide%20Vietnam%20Tourism_0.jpg?itok=rcWRzuk1",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Nha Trang",
+    "file": "nha-trang.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2021-05/Nha%20Trang%20Travel%20Guide%20Vietnam%20Tourism.jpg?itok=yK_Zlnhd",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Da Lat",
+    "file": "da-lat.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2021-05/Da%20Lat%20Travel%20Guide%20Vietnam%20Tourism.jpg?itok=X9VV4Qgl",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "name": "Sa Pa",
+    "file": "sa-pa.jpg",
+    "url": "https://images.vietnam.travel/styles/card_wide_1200w/s3/2021-05/Sapa%20Travel%20Guide%20Vietnam%20Tourism.jpg?itok=BOerSa_Y",
+    "source": "https://vietnam.travel/place-to-go/",
+    "credit": "Vietnam Tourism",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "file": "vinwonders-nam-hoi-an.jpg",
+    "url": "https://static.vinwonders.com/2022/11/TkJTa2wa-BqV7gnU0-Hinh-anh-VinWonders-Nam-Hoi-An-Dao-van-hoa-Quang-truong-van-hoa-Show-Ve-Ben-3x2-so-7.jpg",
+    "source": "https://vinwonders.com/vi/",
+    "credit": "VinWonders",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "file": "vinwonders-phu-quoc.jpg",
+    "url": "https://static.vinwonders.com/production/2026/04/uu-dai-vinwonders-phu-quoc-banner.jpg",
+    "source": "https://vinwonders.com/vi/",
+    "credit": "VinWonders",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  },
+  {
+    "file": "safari-phu-quoc.jpg",
+    "url": "https://static.vinwonders.com/production/2026/03/night-safari-phu-quoc-new-version-473x265.jpg",
+    "source": "https://vinwonders.com/vi/",
+    "credit": "VinWonders",
+    "usage": "Local front-end review only; confirm reuse permission before publication"
+  }
+]

@@ -1,0 +1,208 @@
+.footer {
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  font-family: var(--font-main);
+
+  .menu-main {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-footer {
+    border-radius: 8px;
+    background: #F3F3F3;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 6px;
+    padding: 0 15px;
+
+    &.back {
+      svg {
+        transform: rotate(180deg);
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &.gop-y {
+      color: #C14872;
+      background: rgba(177, 52, 96, 0.10);
+    }
+  }
+
+  .line {
+    background: rgba(0, 0, 0, 0.15);
+    height: 16px;
+    width: 1px;
+  }
+
+  .ft-social {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #F3F3F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .action-footer {
+    color: #5F5F5F;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  .ft-bottom {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    color: #5F5F5F;
+    font-size: 13px;
+    grid-template-columns: 1.3fr 1.5fr 1.2fr;
+    column-gap: 30px;
+    line-height: 1.6;
+    font-weight: 400;
+
+    .link {
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+    }
+
+    h4 {
+      color: #202020;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .info {
+      li {
+        display: flex;
+        column-gap: 8px;
+        margin-bottom: 3px;
+
+        .td1 {
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .fan-page .fb_iframe_widget {
+      width: 100% !important;
+      display: block;
+
+      span {
+        height: 220px !important;
+        margin: 0 auto;
+        display: block;
+
+        iframe {
+          -o-object-position: top;
+          object-position: top;
+          -o-object-fit: cover;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: block;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 13px;
+    border-top: 0;
+  }
+
+  @media screen and (max-width: 1025px) {
+    .menu-main {
+      .menu-right {
+        padding: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .ft-bottom {
+      grid-template-columns: repeat(2, 1fr);
+
+      .first {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .menu-main {
+      display: none;
+    }
+
+    .btn-footer {
+      font-size: 15px;
+      height: 40px;
+    }
+
+    .action-footer {
+      row-gap: 20px;
+      padding: 24px 0;
+
+      &__left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &__right {
+        width: 100%;
+
+        .btn-footer {
+          width: 100%;
+        }
+      }
+    }
+
+    .ft-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 24px 0;
+
+      .td {
+        width: 100%;
+        order: 1;
+      }
+
+      .fan-page {
+        order: 2;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .first {
+        order: 3;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        padding-top: 24px;
+        color: #202020;
+      }
+    }
+
+    .copyright {
+      color: #202020;
+      text-align: left;
+    }
+  }
+}

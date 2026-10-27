@@ -1,0 +1,201 @@
+/* section-top-header */
+
+.section-top-header {
+    height: 41px;
+    position: relative;
+    float: none;
+    z-index: 206;
+    padding: 0 !important;
+    border-bottom: 1px solid #E7E8EC;
+    background: rgba(255, 255, 255, 0.70) !important;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+    }
+
+    .line {
+        background: rgba(0, 0, 0, 0.15);
+        height: 16px;
+        width: 1px;
+    }
+
+    .top-header-left {
+        display: flex;
+        align-items: center;
+
+        a {
+            line-height: 40px;
+            font-size: 13px;
+            color: #5F5F5F;
+            padding: 0 10px;
+        }
+    }
+
+    .top-header-right {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-end;
+        column-gap: 10px;
+    }
+
+    .select-dropdown {
+        color: #5F5F5F;
+
+        .dropbtn {
+            padding: 0 25px 0 10px;
+            line-height: 40px;
+            font-size: 13px;
+
+            &::before {
+                border-top: 1px solid #5F5F5F;
+                border-right: 1px solid #5F5F5F;
+                top: 13px;
+                right: 10px;
+            }
+        }
+
+        .dropdown-content {
+            min-width: 170px;
+            padding: 8px 10px;
+            top: 40px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .select-dropdown {
+            display: none;
+        }
+    }
+
+    @media (max-width: 600px) {
+        background: #fff;
+        height: 38px;
+        top: 0;
+        width: 100%;
+
+        .top-header-left {
+            a {
+                line-height: 37px;
+            }
+        }
+    }
+}
+
+/* /section-top-header */
+
+// MyVne 
+#myvne_taskbar.myvne_taskbar_pc {
+    display: inline-block;
+    position: static;
+    height: auto;
+
+    .myvne_form_log.logged {
+        .myvne_notification {
+            .myvne_icon_bell_click {
+                svg {
+                    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M9.9979 2C13.1469 2 15.7418 4.33488 15.9824 7.3554L15.9958 7.57762L16.0003 7.80214L15.9993 11.398L16.9247 13.6202C16.9472 13.6743 16.9649 13.7302 16.9776 13.7871L16.9929 13.8733L17.0015 14.0046C17.0015 14.4526 16.705 14.8387 16.2524 14.9677L16.136 14.9945L16.0015 15.0046L12.4999 15.004L12.4949 15.1653C12.4098 16.469 11.3254 17.5 10.0003 17.5C8.67478 17.5 7.59022 16.4685 7.50558 15.1644L7.49986 15.004L3.99915 15.0046C3.9112 15.0046 3.82383 14.993 3.73927 14.9702L3.61481 14.9277C3.20403 14.7567 2.96206 14.3392 3.01246 13.8757L3.03354 13.7483L3.07596 13.6202L3.99926 11.401L4.00035 7.79281L4.00465 7.56824C4.12726 4.45115 6.77129 2 9.9979 2ZM11.4999 15.004H8.49986L8.50722 15.1454C8.57576 15.8581 9.143 16.425 9.8558 16.4931L10.0003 16.5C10.78 16.5 11.4207 15.9051 11.4934 15.1445L11.4999 15.004ZM9.9979 3C7.37535 3 5.22741 4.92372 5.0174 7.38498L5.00417 7.59723L5.00026 7.80214V11.5L4.96185 11.6922L3.99914 14.0046L15.9569 14.0066L16.0021 14.0045L15.0387 11.6922L15.0003 11.5L15.0004 7.81241L14.9963 7.60831C14.8911 5.0349 12.6949 3 9.9979 3Z' fill='%239F9F9F'%3e%3c/path%3e%3c/svg%3e");
+                    background-size: contain;
+                    width: 20px;
+                    height: 20px;
+
+                    use {
+                        display: none;
+                    }
+                }
+
+            }
+
+            .badged {
+                top: -2px;
+            }
+        }
+    }
+}
+
+#myvne_taskbar.myvne_taskbar_mobile {
+    position: absolute;
+    height: 37px;
+    z-index: 201;
+    right: 15px;
+    top: 0;
+    display: none;
+
+    ul.myvne_form_log {
+        li.myvne_user {
+            height: 37px !important;
+
+            &>a.myvne_icon {
+                line-height: 37px !important;
+                height: 37px !important;
+            }
+        }
+    }
+
+    i.ic-user {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='14' height='16' viewBox='0 0 14 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 0C4.79086 0 3 1.79086 3 4C3 6.20914 4.79086 8 7 8C9.20914 8 11 6.20914 11 4C11 1.79086 9.20914 0 7 0ZM4 4C4 2.34315 5.34315 1 7 1C8.65685 1 10 2.34315 10 4C10 5.65685 8.65685 7 7 7C5.34315 7 4 5.65685 4 4ZM2.00873 9C0.903151 9 0 9.88687 0 11C0 12.6912 0.83281 13.9663 2.13499 14.7966C3.41697 15.614 5.14526 16 7 16C8.85474 16 10.583 15.614 11.865 14.7966C13.1672 13.9663 14 12.6912 14 11C14 9.89557 13.1045 9.00001 12 9.00001L2.00873 9ZM1 11C1 10.4467 1.44786 10 2.00873 10L12 10C12.5522 10 13 10.4478 13 11C13 12.3088 12.3777 13.2837 11.3274 13.9534C10.2568 14.636 8.73511 15 7 15C5.26489 15 3.74318 14.636 2.67262 13.9534C1.62226 13.2837 1 12.3088 1 11Z' fill='%235F5F5F'/%3e%3c/svg%3e");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center !important;
+        background-size: contain;
+        width: 14px !important;
+        height: 16px !important;
+    }
+
+    .ic-bell {
+        width: 14px !important;
+        height: 16px !important;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='14' height='16' viewBox='0 0 14 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M6.99204 0C10.141 0 12.7359 2.33488 12.9765 5.3554L12.9899 5.57762L12.9944 5.80214L12.9934 9.398L13.9188 11.6202C13.9414 11.6743 13.9591 11.7302 13.9717 11.7871L13.987 11.8733L13.9957 12.0046C13.9957 12.4526 13.6991 12.8387 13.2465 12.9677L13.1302 12.9945L12.9957 13.0046L9.494 13.004L9.48902 13.1653C9.40391 14.469 8.31956 15.5 6.9944 15.5C5.66892 15.5 4.58436 14.4685 4.49972 13.1644L4.494 13.004L0.993294 13.0046C0.905342 13.0046 0.81797 12.993 0.733407 12.9702L0.608948 12.9277C0.198166 12.7567 -0.0438033 12.3392 0.00659775 11.8757L0.0276852 11.7483L0.0701043 11.6202L0.993401 9.401L0.994488 5.79281L0.998788 5.56824C1.1214 2.45115 3.76543 0 6.99204 0ZM8.494 13.004H5.494L5.50136 13.1454C5.5699 13.8581 6.13714 14.425 6.84994 14.4931L6.9944 14.5C7.7741 14.5 8.41485 13.9051 8.48753 13.1445L8.494 13.004ZM6.99204 1C4.36949 1 2.22155 2.92372 2.01154 5.38498L1.99831 5.59723L1.9944 5.80214V9.5L1.956 9.69217L0.993283 12.0046L12.951 12.0066L12.9962 12.0045L12.0328 9.6922L11.9944 9.5L11.9945 5.81241L11.9904 5.60831C11.8853 3.0349 9.68904 1 6.99204 1Z' fill='%235F5F5F'/%3e%3c/svg%3e");
+        background-position: center !important;
+
+        use {
+            display: none;
+        }
+    }
+
+    .dot-blue {
+        top: 10px;
+    }
+}
+
+.myvne_taskbar_2023 {
+    margin-top: 0;
+    margin-left: 0;
+
+    .log_txt {
+        font-size: 13px;
+        font-family: var(--font-main);
+    }
+
+    .myvne_form_log {
+        .myvne_content_notification {
+            right: 0;
+            left: inherit;
+            transform: translateX(0%);
+        }
+    }
+
+    .content-notify {
+        .list-noti {
+            .title-n {
+                font-family: Arial;
+            }
+        }
+    }
+}
+
+// END MyVne 
+
+@media (max-width: 600px) {
+    #myvne_taskbar.myvne_taskbar_pc {
+        display: none
+    }
+
+    #myvne_taskbar.myvne_taskbar_mobile {
+        display: block
+    }
+}

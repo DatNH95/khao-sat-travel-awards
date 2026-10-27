@@ -1,0 +1,125 @@
+/* Scss Document */
+
+@function px_to_rem($target, $context: $base-size) {
+    @if $target==0 {
+        @return 0
+    }
+
+    @return $target / $context+0rem;
+}
+
+$base-size: 16px;
+$lh: 1.313;
+$lhbody: 1.45;
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+    font-size: calculateRem($size);
+}
+
+$color1: #021E56;
+$color2: #FFE74C;
+$color_border: #eeeeee;
+$color_hover: #004f8b;
+$url: "images" !default;
+$vne_color: #9f224e;
+$vne_color_hover: #004f8b;
+$main_width: 1000px;
+$max_width_1000: 750px;
+$max_width_750: 600px;
+$max_width_600: 100%;
+$vne_color: #9f224e;
+$vne_color_hover: #087CCE;
+
+:root {
+    --font-main: 'Arial';
+    --font-title: "Merriweather", serif;
+    --font-ldp: "Montserrat", sans-serif;
+    --color-main: #2A7FFC;
+    --color-hover: #1872F6;
+    --color-dark1: #334155
+}
+
+%font-fea {
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    -webkit-font-feature-settings: 'pnum' on, 'lnum' on;
+    -moz-font-feature-settings: 'pnum' on, 'lnum' on;
+    -ms-font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+%social_btn {
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    margin-left: 5px;
+    display: inline-block;
+
+    i {
+        font-size: 11px;
+        color: #fff;
+        vertical-align: middle;
+        display: inline-block;
+        margin-top: 1px;
+    }
+}
+
+@mixin cubic-transition($delay, $duration, $property) {
+    transition: {
+        duration: $duration;
+        property: $property;
+        timing-function: cubic-bezier(.7, 1, .7, 1);
+    }
+}
+
+%ic_font {
+    font-family: "vnexpress-font" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+
+    &:-moz-placeholder {
+        @content
+    }
+
+    &::-moz-placeholder {
+        @content
+    }
+
+    &:-ms-input-placeholder {
+        @content
+    }
+}
+
+%scroll {
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #4A5182;
+    }
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 5px none;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #4A5182 rgba(192, 192, 192, 0);
+}

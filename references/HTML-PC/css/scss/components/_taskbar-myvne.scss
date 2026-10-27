@@ -1,0 +1,308 @@
+.myvne_form_log {
+	text-align: right;
+	margin-top: 4px;
+	font-family: 'arial', sans-serif;
+
+	.myvne_user,
+	.myvne_notification {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+	}
+
+	.myvne_avatar {
+		height: 25px;
+		line-height: 25px;
+		font-size: 0;
+
+		.avatar_inner {
+			width: 25px;
+			height: 25px;
+			background: #C4C4C4;
+			overflow: hidden;
+			margin-top: -4px;
+			line-height: 25px;
+			text-align: center;
+			border-radius: 50%;
+			display: inline-block;
+			vertical-align: middle;
+			margin-right: 5px;
+			font-size: 18px;
+			font-family: 'arial', sans-serif;
+			text-transform: uppercase;
+			font-weight: 700;
+			color: #fff;
+
+			img {
+				width: 25px;
+				height: 25px;
+			}
+		}
+
+		.name_user_av {
+			font-size: 14px;
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			padding-right: 10px;
+			max-width: 100px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+
+			&:after {
+				width: 0;
+				height: 0;
+				border-left: 3px solid transparent;
+				border-right: 3px solid transparent;
+				border-top: 4px solid #757575;
+				position: absolute;
+				top: 11px;
+				right: 0;
+				content: '';
+			}
+		}
+	}
+
+	.myvne_notification {
+		cursor: pointer;
+
+		.myvne_icon_bell_click {
+			width: 16px;
+			height: 16px;
+			// background: url(images/graphics/notify-ico.svg) no-repeat center center;
+			padding: 5px 10px;
+			color: #fff;
+		}
+
+		.badged {
+			position: absolute;
+			top: -9px;
+			right: -5px;
+			background: #9F224E;
+			border: 1px solid #FFFFFF;
+			border-radius: 10px;
+			font-size: 12px;
+			color: #fff;
+			padding: 1px 5px;
+		}
+	}
+
+	.myvne_user_status {
+		z-index: 99999;
+		position: absolute;
+		height: auto;
+
+		top: 42px;
+		left: auto;
+		right: -30px;
+		margin-top: 0;
+		min-width: 240px;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 0px 0px 3px 3px;
+		padding: 0 15px;
+		text-align: left;
+
+		&:before {
+			width: 15px;
+			height: 15px;
+			border: solid #e5e5e5;
+			border-width: 0 1px 1px 0;
+			content: '';
+			position: absolute;
+			top: -9px;
+			right: 23px;
+			background: #fff;
+			-webkit-transform: rotate(225deg);
+			-ms-transform: rotate(225deg);
+			transform: rotate(225deg);
+		}
+
+		li {
+			width: 100%;
+			float: left;
+
+			&.li_bd {
+				border-bottom: 1px solid #E5E5E5;
+				padding: 0 0 10px 0;
+				margin-bottom: 10px;
+			}
+
+			&.li_account {
+				display: flex;
+				align-items: center;
+				padding: 15px 0;
+			}
+
+			a {
+				font-size: 15px;
+				display: block;
+				line-height: 15px;
+				color: #4F4F4F;
+				padding: 10px 0;
+				position: relative;
+				width: 100%;
+
+				.number_sub {
+					opacity: 0.4;
+				}
+
+				&:hover {
+					color: #087CCE;
+				}
+			}
+
+			&:last-child {
+				a {
+					padding-bottom: 20px;
+					position: relative;
+
+					&:after {
+						width: 12px;
+						height: 12px;
+						background: url(images/graphics/logout.svg) no-repeat 0 0;
+						content: '';
+						position: absolute;
+						top: 12px;
+						left: 45px;
+					}
+				}
+			}
+		}
+
+		.avatar_sub {
+			width: 48px;
+			height: 48px;
+			background: #E5E5E5;
+			text-align: center;
+			line-height: 48px;
+			font-size: 20px;
+			color: #fff;
+			overflow: hidden;
+			border-radius: 50%;
+			font-weight: 700;
+			text-transform: uppercase;
+
+			img {
+				width: 48px;
+				height: 48px;
+			}
+		}
+
+		.name_sub {
+			width: calc(100% - 48px);
+			padding-left: 10px;
+			color: #4F4F4F;
+			font-size: 16px;
+			font-weight: 700;
+		}
+	}
+
+	.myvne_content_notification {
+		z-index: 99999;
+		position: absolute;
+		height: auto;
+		top: 38px;
+		left: auto;
+		right: -15px;
+		margin-top: 0;
+		min-width: 310px;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+		border-radius: 0px 0px 3px 3px;
+		padding: 0;
+		text-align: left;
+
+		&:before {
+			width: 15px;
+			height: 15px;
+			border: solid #e5e5e5;
+			border-width: 0 1px 1px 0;
+			content: '';
+			position: absolute;
+			top: -9px;
+			right: 23px;
+			background: #fff;
+			-webkit-transform: rotate(225deg);
+			-ms-transform: rotate(225deg);
+			transform: rotate(225deg);
+		}
+
+		li {
+			a {
+				font-size: 14px;
+				line-height: 160%;
+				color: #222;
+				padding: 10px 15px;
+				border-top: 1px solid #e5e5e5;
+				display: block;
+
+				.myvne_time {
+					font-size: 12px;
+					color: #757575;
+					padding-top: 5px;
+				}
+
+				&:hover {
+					background: #f7f7f7;
+				}
+
+				img {
+					float: left;
+					margin-right: 10px;
+				}
+			}
+
+			&:first-child {
+				a {
+					border-top: none;
+				}
+			}
+		}
+
+		#myvne_notify_lists {
+			height: 490px;
+			overflow: hidden;
+		}
+
+		.myvne_notification-viewmore {
+			display: block;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			width: 100%;
+			float: left;
+			padding: 0 15px;
+			font-size: 14px;
+			color: #757575;
+			text-decoration: underline;
+			border-top: 1px solid #e5e5e5;
+
+			&:hover {
+				color: #087CCE;
+			}
+		}
+
+		#myvne_loading_viewmore {
+			text-align: center;
+			width: 100%;
+			float: left;
+			padding-bottom: 15px;
+		}
+	}
+
+	li.myvne_loading {
+		text-align: center;
+		margin: 10px;
+		color: #FFF;
+	}
+
+	li.myvne_loading:after {
+		content: "Đang tải...";
+		display: block;
+		color: #333;
+	}
+}

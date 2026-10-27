@@ -1,0 +1,147 @@
+// Apply Grid
+.column2 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.grid {
+    display: grid;
+    position: relative;
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.grid>* {
+    margin-bottom: 0 !important;
+}
+
+@for $i from 1 through 6 {
+    .grid__#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+    }
+}
+
+@for $i from 4 through 40 {
+    .gap-#{$i} {
+        column-gap: #{$i}px !important;
+        row-gap: #{$i}px !important;
+    }
+}
+
+// Font Size
+@for $i from 10 through 40 {
+    .txt_#{$i} {
+        font-size: #{$i}px !important;
+    }
+}
+
+// Apply Margin Grid
+@for $i from 1 through 8 {
+    $val: $i * 5;
+
+    .mt#{$val} {
+        margin-top: #{$val}px;
+
+        @if $val ==40 {
+            @media screen and (max-width: 600px) {
+                margin-top: 20px !important;
+            }
+        }
+    }
+
+    .mb#{$val} {
+        margin-bottom: #{$val}px;
+
+        @if $val ==40 {
+            @media screen and (max-width: 600px) {
+                margin-bottom: 20px !important;
+            }
+        }
+    }
+
+    .pt#{$val} {
+        padding-top: #{$val}px;
+
+        @if $val ==40 {
+            @media screen and (max-width: 600px) {
+                padding-top: 20px !important;
+            }
+        }
+    }
+
+    .pb#{$val} {
+        padding-bottom: #{$val}px;
+
+        @if $val ==40 {
+            @media screen and (max-width: 600px) {
+                padding-bottom: 20px !important;
+            }
+        }
+    }
+
+    .pd#{$val} {
+        padding: #{$val}px;
+
+        @if $val ==40 {
+            @media screen and (max-width: 600px) {
+                padding: 20px !important;
+            }
+        }
+    }
+}
+
+
+// Colors & Backgrounds Map
+$utility-colors: (
+    '333': #333,
+    '666': #666,
+    '999': #999,
+    'ccc': #ccc,
+    'fff': #fff
+);
+
+@each $name, $value in $utility-colors {
+    .color-#{$name} {
+        color: $value;
+    }
+
+    .bg-#{$name} {
+        background: $value;
+    }
+}
+
+// --- Layout Columns ---
+.col-left {
+    width: 800px;
+    width: calc(100% - 300px);
+    padding-right: 32px;
+    flex-grow: 1;
+
+    &::after {
+        display: none;
+    }
+
+    @media (max-width: 991px) {
+        width: 100%;
+        padding-right: 0 !important;
+        margin-bottom: 30px;
+    }
+}
+
+.col-right {
+    width: 300px;
+    padding-left: 0;
+
+    @media (max-width: 991px) {
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+        padding-left: 0 !important;
+        display: block;
+    }
+}
