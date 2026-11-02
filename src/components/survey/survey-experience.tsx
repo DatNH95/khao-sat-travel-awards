@@ -5,11 +5,16 @@ import { ProfileScrollList } from './profile-scroll-list';
 import { getScreeningCopy } from '@/config/survey-copy';
 import { ratingLevels, type CategoryResponse, type SurveyProfile } from '@/config/survey-demo';
 
-export function ProfileScreening({ categoryId, profiles, response, onChange, onNext }: {
+function ratingTone(value: number | undefined) {
+  return value !== undefined && value <= 2 ? 'negative' : value !== undefined && value >= 4 ? 'positive' : 'neutral';
+}
+
+export function ProfileScreening({ categoryId, profiles, response, onChange, onBack, onNext }: {
   categoryId: string;
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   onChange: (response: CategoryResponse) => void;
+  onBack: () => void;
   onNext: () => void;
 }) {
   const copy = getScreeningCopy(categoryId);
@@ -36,26 +41,26 @@ export function ProfileScreening({ categoryId, profiles, response, onChange, onN
       </label>
       <p className="type-body-small survey-screening-hint">Vui lòng chọn ít nhất 1 hồ sơ hoặc chọn &quot;{copy.noneLabel}&quot;</p>
     </fieldset>
-    <div className="nomination-actions"><div className="survey-action-group"><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
+    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại giải thưởng</Button><div className="survey-action-group"><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
   </form>;
 }
 
-export function SatisfactionRating({ profiles, response, onChange, onComplete }: {
+export function SatisfactionRating({ profiles, response, onChange, onBack, onComplete }: {
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   onChange: (response: CategoryResponse) => void;
+  onBack: () => void;
   onComplete: () => void;
 }) {
   const selected = profiles.filter(profile => response.selected.includes(profile.id));
   const rated = selected.filter(profile => ratingLevels.some(level => level.value === response.ratings[profile.id])).length;
   return <form onSubmit={event => { event.preventDefault(); if (selected.length > 0 && rated === selected.length) onComplete(); }}>
-    <div className="survey-profile-toolbar"><p className="type-body-small" role="status">Đã đánh giá {rated}/{selected.length} hồ sơ</p><button className="text-link survey-inline-button" type="button" onClick={() => onChange({ ...response, ratings: Object.fromEntries(selected.map(profile => [profile.id, 5])), completed: false })}>Chọn 5 điểm cho tất cả</button></div>
     <div className="survey-rating-table-wrap"><table className="survey-rating-table">
       <caption>Mức độ hài lòng (Thang điểm 5 mức)</caption>
-      <thead><tr><th scope="col">Hồ sơ đã chọn</th>{ratingLevels.map(level => <th key={level.value} scope="col"><span>{level.label}</span><span className="survey-rating-number" aria-label={`${level.value} điểm`}><UiIcon name="star" size={20} /></span></th>)}</tr></thead>
-      <tbody>{selected.map(profile => <tr key={profile.id}><th scope="row"><div className="survey-rating-profile">{profile.image && <Image src={profile.image} alt="" width={44} height={32} />}<span><strong>{profile.name}</strong><small>{profile.location}</small></span></div></th>{ratingLevels.map(level => <td key={level.value} data-label={level.label}><label className="survey-rating-control"><input type="radio" required name={`rating-${profile.id}`} value={level.value} checked={response.ratings[profile.id] === level.value} onChange={() => onChange({ ...response, ratings: { ...response.ratings, [profile.id]: level.value }, completed: false })} /><span className="sr-only">{level.label} cho {profile.name}</span><span className="survey-rating-mobile-label" aria-hidden="true">{level.label}</span></label></td>)}</tr>)}</tbody>
+      <thead><tr><th scope="col">Hồ sơ đã chọn</th>{ratingLevels.map(level => <th key={level.value} scope="col" data-rating-tone={ratingTone(level.value)}><span>{level.label}</span><span className="survey-rating-number" aria-label={`${level.value} điểm`}><UiIcon name="star" size={20} /></span></th>)}</tr></thead>
+      <tbody>{selected.map(profile => <tr key={profile.id}><th scope="row"><div className="survey-rating-profile">{profile.image && <Image src={profile.image} alt="" width={44} height={32} />}<span><strong>{profile.name}</strong><small>{profile.location}</small></span></div></th>{ratingLevels.map(level => <td key={level.value} data-label={level.label} data-rating-tone={ratingTone(level.value)}><label className="survey-rating-control"><input type="radio" required name={`rating-${profile.id}`} value={level.value} checked={response.ratings[profile.id] === level.value} onChange={() => onChange({ ...response, ratings: { ...response.ratings, [profile.id]: level.value }, completed: false })} /><span className="sr-only">{level.label} cho {profile.name}</span><span className="survey-rating-mobile-label" aria-hidden="true">{level.label}</span></label></td>)}</tr>)}</tbody>
     </table></div>
-    <div className="nomination-actions"><div className="survey-action-group"><p className="type-body-small">{rated === selected.length ? 'Đã đánh giá đủ' : 'Vui lòng đánh giá tất cả hồ sơ'}</p><Button type="submit" disabled={selected.length === 0 || rated !== selected.length}>Hoàn tất<UiIcon name="arrow-right" size={18} /></Button></div></div>
+    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại giải thưởng</Button><div className="survey-action-group"><p className="type-body-small">{rated === selected.length ? 'Đã đánh giá đủ' : 'Vui lòng đánh giá tất cả hồ sơ'}</p><Button type="submit" disabled={selected.length === 0 || rated !== selected.length}>Hoàn tất<UiIcon name="arrow-right" size={18} /></Button></div></div>
   </form>;
 }
 
@@ -70,7 +75,7 @@ export function SurveyCompletion({ profiles, response, completedCounts, onBack, 
     <span className="survey-completion-icon"><UiIcon name="check" size={44} /></span>
     <h3 className="type-heading-3">Hoàn thành</h3>
     <p>Cảm ơn bạn đã tham gia khảo sát.</p>
-    <div className="survey-completion-summary stack"><h4>Phản hồi của bạn</h4>{response.noneUsed ? <p>Chưa trải nghiệm · Không chấm điểm.</p> : <dl>{profiles.filter(profile => response.selected.includes(profile.id)).map(profile => <div key={profile.id}><dt>{profile.name}</dt><dd><strong>{response.ratings[profile.id]}/5</strong> · {ratingLevels.find(level => level.value === response.ratings[profile.id])?.label}</dd></div>)}</dl>}
+    <div className="survey-completion-summary stack"><h4>Phản hồi của bạn</h4>{response.noneUsed ? <p>Chưa trải nghiệm · Không chấm điểm.</p> : <dl>{profiles.filter(profile => response.selected.includes(profile.id)).map(profile => <div key={profile.id}><dt>{profile.name}</dt><dd data-rating-tone={ratingTone(response.ratings[profile.id])}><strong>{response.ratings[profile.id]}/5</strong> · {ratingLevels.find(level => level.value === response.ratings[profile.id])?.label}</dd></div>)}</dl>}
       <div className="survey-completion-progress">{completedCounts.map(group => <div key={group.label}><p>{group.label}<strong>{group.completed}/{group.total}</strong></p><progress value={group.completed} max={group.total} aria-label={`Tiến trình mẫu ${group.label}`} /></div>)}</div>
     </div>
     <div className="survey-completion-actions"><Button variant="secondary" onClick={onBack}>Về danh sách</Button>{onNext && <Button onClick={onNext}>Hạng mục tiếp theo<UiIcon name="arrow-right" size={18} /></Button>}</div>

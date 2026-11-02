@@ -40,7 +40,7 @@ export function CategorySurvey() {
 
   function navigate(next: number) {
     if (next > 3 || next < 0 || (next > 0 && !selectedCategory)) return;
-    if ((next < step && !(step === 3 && next === 0)) || (response.completed && (next === 1 || next === 2))) return;
+    if ((next < step && next !== 0) || (response.completed && (next === 1 || next === 2))) return;
     if (next === 2 && (response.noneUsed || response.selected.length === 0)) return;
     if (step === 3 && next === 0) setSelection('');
     setStep(next);
@@ -83,8 +83,8 @@ export function CategorySurvey() {
           <div className="survey-selection" role="status" aria-live="polite"><span>Đang chọn</span>{selectedCategory ? <strong>{selectedCategory.title}</strong> : <p>Chưa chọn hạng mục</p>}</div>
           <Button className="survey-continue" type="submit" disabled={!selectedCategory || response.completed}>Tiếp tục khảo sát hạng mục này<UiIcon name="arrow-right" size={18} /></Button>
         </div>
-      </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onNext={() => response.noneUsed ? complete() : navigate(2)} />
-        : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onComplete={complete} />
+      </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onNext={() => response.noneUsed ? complete() : navigate(2)} />
+        : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onComplete={complete} />
         : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
     </div>
   </div>;

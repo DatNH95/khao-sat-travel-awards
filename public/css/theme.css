@@ -373,3 +373,15 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-project-intro p { margin: 0; line-height: 1.65; }
 .survey-project-intro .text-link { display: inline-flex; align-items: center; gap: .5rem; padding-block: .25rem; }
 .survey-category[data-completed="true"] { cursor: default; }
+
+/* Keep rating meaning visible in both labels and the selected control. */
+.survey-workspace [data-rating-tone='positive'] { --rating-color: #15803d; --rating-surface: #f0fdf4; }
+.survey-workspace [data-rating-tone='negative'] { --rating-color: #b91c1c; --rating-surface: #fef2f2; }
+.survey-workspace [data-rating-tone='neutral'] { --rating-color: #475569; --rating-surface: #f1f5f9; }
+.survey-rating-table [data-rating-tone] { color: var(--rating-color); }
+.survey-rating-table [data-rating-tone] .survey-rating-number { color: inherit; }
+.survey-rating-table [data-rating-tone] .survey-rating-control input { border-color: color-mix(in srgb, var(--rating-color) 45%, var(--color-surface-primary)); }
+.survey-rating-table [data-rating-tone] .survey-rating-control input:checked { border-color: var(--rating-color); background: radial-gradient(circle, var(--rating-color) 0 5px, var(--rating-surface) 6px); }
+.survey-rating-table td[data-rating-tone]:has(input:checked) { background: var(--rating-surface); }
+.survey-completion-summary dd[data-rating-tone] { color: var(--rating-color); background: var(--rating-surface); }
+.survey-category[data-completed='true'], .survey-category[data-completed='true']:hover { background: var(--color-surface-completed, #f1f5f9); border-color: var(--color-border-default); box-shadow: none; }
