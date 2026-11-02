@@ -169,7 +169,7 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-rating-control input { width: 1.25rem; height: 1.25rem; accent-color: var(--color-action-primary); cursor: pointer; }
 .survey-rating-mobile-label { display: none; }
 .survey-completion { justify-items: center; max-width: var(--container-reading); margin-inline: auto; text-align: center; }
-.survey-completion-icon { display: grid; place-items: center; width: 5rem; height: 5rem; border-radius: var(--radius-pill); background: var(--color-surface-brand-soft); color: var(--color-action-secondary); }
+.survey-completion-icon { display: grid; place-items: center; width: 5rem; height: 5rem; border-radius: var(--radius-pill); background: var(--color-surface-brand-soft); color: var(--color-action-primary); }
 .survey-completion-summary { width: 100%; padding: 1.5rem; background: var(--color-surface-brand-soft); text-align: left; }
 .survey-completion-summary h4 { margin: 0; font-weight: 600; }
 .survey-completion-summary dl { margin: 0; display: grid; gap: .75rem; }
@@ -327,8 +327,6 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-rating-number { font-size: 1.25rem; color: #13845b; }
 .survey-completion { max-width: 42rem; padding: 1rem; }
 .survey-completion-icon { position: relative; box-shadow: inset 0 2px 4px #13845b15; }
-.survey-completion-icon::before, .survey-completion-icon::after { content: '✦'; color: #fbbf24; position: absolute; top: -.75rem; left: -.5rem; }
-.survey-completion-icon::after { left: auto; right: -.5rem; top: 3rem; }
 .survey-completion-summary { border-radius: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem; }
 .survey-completion-summary dl > div, .survey-completion-progress > div { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: .75rem; }
 .survey-completion-summary dl > div { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
@@ -374,3 +372,4 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-project-intro { max-width: var(--container-reading); display: grid; justify-items: start; gap: calc(var(--spacing) * 2); }
 .survey-project-intro p { margin: 0; line-height: 1.65; }
 .survey-project-intro .text-link { display: inline-flex; align-items: center; gap: .5rem; padding-block: .25rem; }
+.survey-category[data-completed="true"] { cursor: default; }

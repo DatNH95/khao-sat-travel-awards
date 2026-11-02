@@ -5,12 +5,11 @@ import { ProfileScrollList } from './profile-scroll-list';
 import { getScreeningCopy } from '@/config/survey-copy';
 import { ratingLevels, type CategoryResponse, type SurveyProfile } from '@/config/survey-demo';
 
-export function ProfileScreening({ categoryId, profiles, response, onChange, onBack, onNext }: {
+export function ProfileScreening({ categoryId, profiles, response, onChange, onNext }: {
   categoryId: string;
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   onChange: (response: CategoryResponse) => void;
-  onBack: () => void;
   onNext: () => void;
 }) {
   const copy = getScreeningCopy(categoryId);
@@ -37,15 +36,14 @@ export function ProfileScreening({ categoryId, profiles, response, onChange, onB
       </label>
       <p className="type-body-small survey-screening-hint">Vui lòng chọn ít nhất 1 hồ sơ hoặc chọn &quot;{copy.noneLabel}&quot;</p>
     </fieldset>
-    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại hạng mục</Button><div className="survey-action-group"><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
+    <div className="nomination-actions"><div className="survey-action-group"><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
   </form>;
 }
 
-export function SatisfactionRating({ profiles, response, onChange, onBack, onComplete }: {
+export function SatisfactionRating({ profiles, response, onChange, onComplete }: {
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   onChange: (response: CategoryResponse) => void;
-  onBack: () => void;
   onComplete: () => void;
 }) {
   const selected = profiles.filter(profile => response.selected.includes(profile.id));
@@ -57,25 +55,24 @@ export function SatisfactionRating({ profiles, response, onChange, onBack, onCom
       <thead><tr><th scope="col">Hồ sơ đã chọn</th>{ratingLevels.map(level => <th key={level.value} scope="col"><span>{level.label}</span><span className="survey-rating-number" aria-label={`${level.value} điểm`}><UiIcon name="star" size={20} /></span></th>)}</tr></thead>
       <tbody>{selected.map(profile => <tr key={profile.id}><th scope="row"><div className="survey-rating-profile">{profile.image && <Image src={profile.image} alt="" width={44} height={32} />}<span><strong>{profile.name}</strong><small>{profile.location}</small></span></div></th>{ratingLevels.map(level => <td key={level.value} data-label={level.label}><label className="survey-rating-control"><input type="radio" required name={`rating-${profile.id}`} value={level.value} checked={response.ratings[profile.id] === level.value} onChange={() => onChange({ ...response, ratings: { ...response.ratings, [profile.id]: level.value }, completed: false })} /><span className="sr-only">{level.label} cho {profile.name}</span><span className="survey-rating-mobile-label" aria-hidden="true">{level.label}</span></label></td>)}</tr>)}</tbody>
     </table></div>
-    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại hồ sơ</Button><div className="survey-action-group"><p className="type-body-small">{rated === selected.length ? 'Đã đánh giá đủ' : 'Vui lòng đánh giá tất cả hồ sơ'}</p><Button type="submit" disabled={selected.length === 0 || rated !== selected.length}>Hoàn tất<UiIcon name="arrow-right" size={18} /></Button></div></div>
+    <div className="nomination-actions"><div className="survey-action-group"><p className="type-body-small">{rated === selected.length ? 'Đã đánh giá đủ' : 'Vui lòng đánh giá tất cả hồ sơ'}</p><Button type="submit" disabled={selected.length === 0 || rated !== selected.length}>Hoàn tất<UiIcon name="arrow-right" size={18} /></Button></div></div>
   </form>;
 }
 
-export function SurveyCompletion({ profiles, response, completedCounts, onEdit, onBack, onNext }: {
+export function SurveyCompletion({ profiles, response, completedCounts, onBack, onNext }: {
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   completedCounts: readonly { label: string; completed: number; total: number }[];
-  onEdit: () => void;
   onBack: () => void;
   onNext?: () => void;
 }) {
   return <div className="survey-completion stack">
-    <span className="survey-completion-icon"><svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21 23 12 2 3 2 10 17 12 2 14Z" /></svg></span>
-    <h3 className="type-heading-3">Cảm ơn bạn!</h3>
-    <p>Đã hoàn tất bản xem thử. Phản hồi chưa được gửi.</p>
+    <span className="survey-completion-icon"><UiIcon name="check" size={44} /></span>
+    <h3 className="type-heading-3">Hoàn thành</h3>
+    <p>Cảm ơn bạn đã tham gia khảo sát.</p>
     <div className="survey-completion-summary stack"><h4>Phản hồi của bạn</h4>{response.noneUsed ? <p>Chưa trải nghiệm · Không chấm điểm.</p> : <dl>{profiles.filter(profile => response.selected.includes(profile.id)).map(profile => <div key={profile.id}><dt>{profile.name}</dt><dd><strong>{response.ratings[profile.id]}/5</strong> · {ratingLevels.find(level => level.value === response.ratings[profile.id])?.label}</dd></div>)}</dl>}
       <div className="survey-completion-progress">{completedCounts.map(group => <div key={group.label}><p>{group.label}<strong>{group.completed}/{group.total}</strong></p><progress value={group.completed} max={group.total} aria-label={`Tiến trình mẫu ${group.label}`} /></div>)}</div>
     </div>
-    <div className="survey-completion-actions"><Button variant="secondary" onClick={onBack}>Về danh sách</Button>{onNext && <Button onClick={onNext}>Hạng mục tiếp theo<UiIcon name="arrow-right" size={18} /></Button>}<button type="button" className="text-link survey-inline-button" onClick={onEdit}>Sửa phản hồi</button></div>
+    <div className="survey-completion-actions"><Button variant="secondary" onClick={onBack}>Về danh sách</Button>{onNext && <Button onClick={onNext}>Hạng mục tiếp theo<UiIcon name="arrow-right" size={18} /></Button>}</div>
   </div>;
 }

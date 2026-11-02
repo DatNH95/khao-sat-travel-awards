@@ -27,10 +27,11 @@ export function CategorySurvey() {
   const stepTitles = ['Chọn hạng mục giải thưởng để khảo sát hồ sơ dự thi', screeningCopy.question, screeningCopy.ratingTitle, 'Hoàn thành'];
 
   function updateResponse(next: CategoryResponse) {
-    setResponses(current => ({ ...current, [selection]: next }));
+    setResponses(current => current[selection]?.completed ? current : { ...current, [selection]: next });
   }
 
   function complete() {
+    if (response.completed) return;
     const validRatings = response.selected.length > 0 && response.selected.every(id => ratingLevels.some(level => level.value === response.ratings[id]));
     if (!response.noneUsed && !validRatings) return;
     updateResponse({ ...response, completed: true });
@@ -39,13 +40,15 @@ export function CategorySurvey() {
 
   function navigate(next: number) {
     if (next > 3 || next < 0 || (next > 0 && !selectedCategory)) return;
+    if ((next < step && !(step === 3 && next === 0)) || (response.completed && (next === 1 || next === 2))) return;
     if (next === 2 && (response.noneUsed || response.selected.length === 0)) return;
+    if (step === 3 && next === 0) setSelection('');
     setStep(next);
     requestAnimationFrame(() => heading.current?.focus());
   }
 
   return <div className="nomination-layout survey-workspace" data-step={step}>
-    <SurveyProgress steps={steps} currentStep={step} onBack={navigate} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
+    <SurveyProgress steps={steps} currentStep={step} onBack={navigate} allowBack={false} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
     <div className="nomination-content survey-body">
       <header className="nomination-step-heading survey-body-heading">
         <div className="nomination-title-copy">
@@ -67,9 +70,9 @@ export function CategorySurvey() {
               </header>
               <div className="survey-category-list" tabIndex={0} role="region" aria-label={`Danh sách ${group.label}`}>
                 {group.categories.map(category => <label className="nomination-category survey-category" data-selected={selection === category.id} data-completed={responses[category.id]?.completed || undefined} key={category.id}>
-                  <input type="radio" name="survey-category" value={category.id} checked={selection === category.id} required onChange={() => setSelection(category.id)} aria-describedby={`${uid}-${category.id}-description`} />
+                  <input type="radio" name="survey-category" value={category.id} checked={selection === category.id} disabled={responses[category.id]?.completed} required onChange={() => setSelection(category.id)} aria-describedby={`${uid}-${category.id}-description`} />
                   <span className="survey-category-icon"><UiIcon name={category.icon} size={23} /></span>
-                  <span className="survey-category-copy"><span className="survey-category-title">{category.title}</span><span className="survey-category-description" id={`${uid}-${category.id}-description`}>{responses[category.id]?.completed ? 'Đã hoàn tất · Xem lại' : category.summary ?? category.description}</span></span>
+                  <span className="survey-category-copy"><span className="survey-category-title">{category.title}</span><span className="survey-category-description" id={`${uid}-${category.id}-description`}>{responses[category.id]?.completed ? 'Đã hoàn thành' : category.summary ?? category.description}</span></span>
                   <span className="survey-category-arrow"><UiIcon name={selection === category.id || responses[category.id]?.completed ? 'check' : 'angle-right'} size={16} /></span>
                 </label>)}
               </div>
@@ -78,11 +81,11 @@ export function CategorySurvey() {
         </fieldset>
         <div className="nomination-actions survey-category-actions">
           <div className="survey-selection" role="status" aria-live="polite"><span>Đang chọn</span>{selectedCategory ? <strong>{selectedCategory.title}</strong> : <p>Chưa chọn hạng mục</p>}</div>
-          <Button className="survey-continue" type="submit" disabled={!selectedCategory}>Tiếp tục khảo sát hạng mục này<UiIcon name="arrow-right" size={18} /></Button>
+          <Button className="survey-continue" type="submit" disabled={!selectedCategory || response.completed}>Tiếp tục khảo sát hạng mục này<UiIcon name="arrow-right" size={18} /></Button>
         </div>
-      </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onNext={() => response.noneUsed ? complete() : navigate(2)} />
-        : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(1)} onComplete={complete} />
-        : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onEdit={() => navigate(1)} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
+      </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onNext={() => response.noneUsed ? complete() : navigate(2)} />
+        : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onComplete={complete} />
+        : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
     </div>
   </div>;
 }

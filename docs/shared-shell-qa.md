@@ -44,3 +44,9 @@
 - Kiểm tra Nhân vật: câu hỏi biết đến/theo dõi, none option đúng đối tượng, nhánh bỏ qua vẫn tới Hoàn thành. Điểm đến chuyển thành từng đến và Chọn điểm đến, không còn gọi chung đơn vị.
 - Mô tả dự án dưới tiêu đề ở desktop và mobile320, không overflow. Xem chi tiết class text-link trỏ đúng URL cấu hình /the-le, không có khung nút. Không kiểm tra trang đích vì website Travel Awards cổng3001 không chạy khi review.
 - Pseudo-element gradient trang đã bỏ (computed content none), BG1 vẫn tải. Giữ gradient báo cuộn danh sách hồ sơ và animation timeline.
+
+## Hoàn thành và luồng một chiều — 02.11.2026
+
+- Màn cuối dùng tick xanh, tiêu đề Hoàn thành, câu Cảm ơn bạn đã tham gia khảo sát. Bỏ Sửa phản hồi và các nút quay lại bước trước; timeline không điều hướng lùi. Hạng mục hoàn thành khóa chọn và chặn cập nhật ở state, không có nhãn Xem lại.
+- Giữ Về danh sách/Hạng mục tiếp theo để tiếp tục các hạng mục chưa khảo sát; không mở lại phản hồi đã hoàn thành. Dữ liệu vẫn chỉ trong bộ nhớ, reload reset; chưa có gửi/lưu backend.
+- pnpm typecheck và pnpm build --webpack đạt; localhost cập nhật. Browser xác nhận lời cảm ơn, tick, không có Sửa phản hồi và các nút timeline disabled trên màn cuối. Không đồng bộ handoff theo quy ước mới.
