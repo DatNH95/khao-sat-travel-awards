@@ -129,11 +129,9 @@
   .survey-dot-timeline .nomination-step-number, .survey-dot-timeline li::after { transition: none; }
 }
 @media (max-width: 39.99rem) {
-  .survey-category-page::before { width: 24rem; left: -16rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .survey-category-page::before { animation: none; }
-}
-@media (max-width: 39.99rem) {
   .survey-profile-scroll[data-scrollable='true'] .survey-profile-list { max-height: min(420px, 60dvh); }
+}
+@media (max-width: 47.99rem) {
+  .survey-page-intro .nomination-title-row { flex-direction: column; gap: calc(var(--spacing) * 4); }
+  .survey-project-intro { flex-basis: auto; width: 100%; }
 }

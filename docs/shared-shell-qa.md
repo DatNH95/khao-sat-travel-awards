@@ -36,3 +36,11 @@
 - Chọn tất cả chọn đủ 8, nút đổi Bỏ chọn tất cả; bỏ hết về 0 và Tiếp tục disabled. Thông báo hướng dẫn cố định đúng câu người dùng cung cấp, không còn đếm số hồ sơ cạnh Tiếp tục.
 - Tiêu đề đo 36px, header position static, tâm gradient ở 128px gần đầu section. Mobile390 không overflow, danh sách cuộn cao tối đa420px. Tick xác nhận trực quan giữa ô; console không warning/error.
 - Dữ liệu thật cho demo ở destination (8) và creative-product (3), nguồn ảnh lưu survey-photo-sources.json. Không gọi là hồ sơ dự thi chính thức, không gửi dữ liệu.
+
+## Câu chữ và mô tả dự án — 02.11.2026
+
+- pnpm typecheck, pnpm build --webpack và pnpm handoff:sync đạt.
+- Browser xác nhận timeline Giải thưởng / Chọn hồ sơ (thay theo hạng mục) / Đánh giá / Hoàn thành.
+- Kiểm tra Nhân vật: câu hỏi biết đến/theo dõi, none option đúng đối tượng, nhánh bỏ qua vẫn tới Hoàn thành. Điểm đến chuyển thành từng đến và Chọn điểm đến, không còn gọi chung đơn vị.
+- Mô tả dự án dưới tiêu đề ở desktop và mobile320, không overflow. Xem chi tiết class text-link trỏ đúng URL cấu hình /the-le, không có khung nút. Không kiểm tra trang đích vì website Travel Awards cổng3001 không chạy khi review.
+- Pseudo-element gradient trang đã bỏ (computed content none), BG1 vẫn tải. Giữ gradient báo cuộn danh sách hồ sơ và animation timeline.

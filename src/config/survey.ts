@@ -5,9 +5,9 @@ export const surveyConfig: SurveyConfig = {
   title: 'Khảo sát trải nghiệm',
   description: 'Chọn hạng mục và chia sẻ đánh giá của bạn.',
   steps: [
-    { id: 'category', title: 'Chọn hạng mục giải thưởng', description: 'Mỗi hạng mục trao giải cho một nhóm đối tượng khác nhau (15 hạng mục).' },
-    { id: 'experience', title: 'Chọn các đơn vị đã từng sử dụng', description: 'Bạn đã từng sử dụng sản phẩm/dịch vụ của đơn vị nào dưới đây?' },
-    { id: 'rating', title: 'Đánh giá mức độ hài lòng', description: 'Đánh giá trải nghiệm tại các đơn vị đã chọn.' },
-    { id: 'completion', title: 'Hoàn thành đánh giá', description: 'Xem lại phản hồi trong bản khảo sát mẫu.' },
+    { id: 'category', title: 'Giải thưởng', description: 'Chọn hạng mục khảo sát.' },
+    { id: 'experience', title: 'Chọn hồ sơ', description: 'Chọn các hồ sơ phù hợp với trải nghiệm hoặc hiểu biết của bạn.' },
+    { id: 'rating', title: 'Đánh giá', description: 'Đánh giá các hồ sơ đã chọn.' },
+    { id: 'completion', title: 'Hoàn thành', description: 'Xem lại phản hồi trong bản khảo sát mẫu.' },
   ],
 };

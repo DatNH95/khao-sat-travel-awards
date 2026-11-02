@@ -2,15 +2,18 @@ import Image from 'next/image';
 import { Button } from '@/components/primitives';
 import { UiIcon } from '@/components/ui-icon';
 import { ProfileScrollList } from './profile-scroll-list';
+import { getScreeningCopy } from '@/config/survey-copy';
 import { ratingLevels, type CategoryResponse, type SurveyProfile } from '@/config/survey-demo';
 
-export function ProfileScreening({ profiles, response, onChange, onBack, onNext }: {
+export function ProfileScreening({ categoryId, profiles, response, onChange, onBack, onNext }: {
+  categoryId: string;
   profiles: readonly SurveyProfile[];
   response: CategoryResponse;
   onChange: (response: CategoryResponse) => void;
   onBack: () => void;
   onNext: () => void;
 }) {
+  const copy = getScreeningCopy(categoryId);
   const allSelected = profiles.length > 0 && profiles.every(profile => response.selected.includes(profile.id));
   function toggleProfile(id: string, checked: boolean) {
     const ratings = { ...response.ratings };
@@ -19,7 +22,7 @@ export function ProfileScreening({ profiles, response, onChange, onBack, onNext 
   }
   return <form onSubmit={event => { event.preventDefault(); if (response.noneUsed || response.selected.length) onNext(); }}>
     <fieldset className="nomination-form-section stack">
-      <legend className="sr-only">Chọn đơn vị hoặc hồ sơ đã trải nghiệm</legend>
+      <legend className="sr-only">{copy.question}</legend>
       <div className="survey-profile-toolbar"><p>Có thể chọn nhiều hồ sơ.</p><Button variant="secondary" onClick={() => onChange({ ...response, selected: allSelected ? [] : profiles.map(profile => profile.id), noneUsed: false, ratings: allSelected ? {} : response.ratings, completed: false })}>{allSelected ? 'Bỏ chọn tất cả' : `Chọn tất cả (${profiles.length})`}</Button></div>
       <ProfileScrollList count={profiles.length}>{profiles.map((profile, index) => <label className="survey-profile-card" data-selected={response.selected.includes(profile.id)} key={profile.id}>
         <input type="checkbox" name="experienced-profile" value={profile.id} checked={response.selected.includes(profile.id)} onChange={event => toggleProfile(profile.id, event.target.checked)} />
@@ -27,13 +30,14 @@ export function ProfileScreening({ profiles, response, onChange, onBack, onNext 
         <span className="survey-profile-copy"><strong>{index + 1}. {profile.name}</strong><span><UiIcon name="marker" size={14} />{profile.location}</span></span>
         <span className="survey-profile-state" aria-hidden="true">{response.selected.includes(profile.id) ? 'Đã chọn khảo sát' : 'Chưa chọn'}</span>
       </label>)}</ProfileScrollList>
-      <p className="survey-choice-divider">Hoặc nếu bạn chưa từng trải nghiệm</p>
+      <p className="survey-choice-divider">{copy.divider}</p>
       <label className="survey-profile-card survey-none-used" data-selected={response.noneUsed}>
         <input type="checkbox" checked={response.noneUsed} onChange={event => onChange({ selected: [], noneUsed: event.target.checked, ratings: {}, completed: false })} />
-        <span className="survey-profile-copy"><strong>Chưa từng sử dụng dịch vụ của các đơn vị trên</strong><span>Bỏ qua chấm điểm và hoàn tất khảo sát.</span></span>
+        <span className="survey-profile-copy"><strong>{copy.noneLabel}</strong><span>Bỏ qua chấm điểm và hoàn tất khảo sát.</span></span>
       </label>
+      <p className="type-body-small survey-screening-hint">Vui lòng chọn ít nhất 1 hồ sơ hoặc chọn &quot;{copy.noneLabel}&quot;</p>
     </fieldset>
-    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại hạng mục</Button><div className="survey-action-group"><p className="type-body-small">Vui lòng chọn ít nhất 1 hồ sơ hoặc chọn &quot;Chưa từng sử dụng&quot;</p><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
+    <div className="nomination-actions"><Button variant="secondary" onClick={onBack}><UiIcon name="angle-left" size={16} />Chọn lại hạng mục</Button><div className="survey-action-group"><Button className="survey-continue" type="submit" disabled={!response.noneUsed && response.selected.length === 0}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button></div></div>
   </form>;
 }
 

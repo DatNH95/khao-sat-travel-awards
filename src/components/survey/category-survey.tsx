@@ -5,6 +5,7 @@ import { Button } from '@/components/primitives';
 import { UiIcon } from '@/components/ui-icon';
 import { categoryGroups, totalCategories } from '@/config/survey-categories';
 import { surveyConfig } from '@/config/survey';
+import { getScreeningCopy } from '@/config/survey-copy';
 import { SurveyProgress } from './survey-progress';
 import { ProfileScreening, SatisfactionRating, SurveyCompletion } from './survey-experience';
 import { emptyResponse, getSurveyProfiles, ratingLevels, type CategoryResponse } from '@/config/survey-demo';
@@ -21,7 +22,9 @@ export function CategorySurvey() {
   const profiles = getSurveyProfiles(selection);
   const completedCounts = categoryGroups.map(group => ({ label: group.label, completed: group.categories.filter(category => responses[category.id]?.completed).length, total: group.categories.length }));
   const nextCategory = categoryGroups.flatMap(group => group.categories).find(category => !responses[category.id]?.completed && category.id !== selection);
-  const stepTitles = ['Chọn hạng mục giải thưởng để khảo sát hồ sơ dự thi', 'Bạn đã từng sử dụng sản phẩm/dịch vụ của đơn vị nào dưới đây?', 'Vui lòng đánh giá mức độ hài lòng với các đơn vị đã chọn.', 'Hoàn thành đánh giá'];
+  const screeningCopy = getScreeningCopy(selection);
+  const steps = surveyConfig.steps.map((item, index) => index === 1 ? { ...item, title: screeningCopy.stepTitle } : item);
+  const stepTitles = ['Chọn hạng mục giải thưởng để khảo sát hồ sơ dự thi', screeningCopy.question, screeningCopy.ratingTitle, 'Hoàn thành'];
 
   function updateResponse(next: CategoryResponse) {
     setResponses(current => ({ ...current, [selection]: next }));
@@ -42,7 +45,7 @@ export function CategorySurvey() {
   }
 
   return <div className="nomination-layout survey-workspace" data-step={step}>
-    <SurveyProgress steps={surveyConfig.steps} currentStep={step} onBack={navigate} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
+    <SurveyProgress steps={steps} currentStep={step} onBack={navigate} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
     <div className="nomination-content survey-body">
       <header className="nomination-step-heading survey-body-heading">
         <div className="nomination-title-copy">
@@ -77,7 +80,7 @@ export function CategorySurvey() {
           <div className="survey-selection" role="status" aria-live="polite"><span>Đang chọn</span>{selectedCategory ? <strong>{selectedCategory.title}</strong> : <p>Chưa chọn hạng mục</p>}</div>
           <Button className="survey-continue" type="submit" disabled={!selectedCategory}>Tiếp tục khảo sát hạng mục này<UiIcon name="arrow-right" size={18} /></Button>
         </div>
-      </form> : step === 1 ? <ProfileScreening profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onNext={() => response.noneUsed ? complete() : navigate(2)} />
+      </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onNext={() => response.noneUsed ? complete() : navigate(2)} />
         : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(1)} onComplete={complete} />
         : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onEdit={() => navigate(1)} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
     </div>

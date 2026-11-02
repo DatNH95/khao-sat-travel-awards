@@ -26,3 +26,11 @@ Header chỉ còn logo, liên kết landing page qua NEXT_PUBLIC_TRAVEL_AWARDS_U
 - Nguồn tên/ảnh: https://vietnam.travel/place-to-go/ và https://vinwonders.com/vi/ ; URL/credit từng ảnh nằm trong survey-photo-sources.json. Ảnh dùng cho review local, không có xác nhận quyền xuất bản công khai.
 - Danh sách hơn 5 hồ sơ cuộn nội bộ, lớp fade trắng không nhận tương tác và biến mất ở cuối; hỗ trợ focus bàn phím. Chọn tất cả đổi thành Bỏ chọn tất cả khi đủ lựa chọn; bỏ hết cũng xóa điểm cũ. Câu hướng dẫn cạnh Tiếp tục hiển thị đúng nội dung người dùng yêu cầu.
 - Dấu tick checkbox căn giữa; tiêu đề khảo sát 36px. Header cuộn bình thường; gradient trang đặt gần header.
+
+## Câu chữ theo hạng mục và giới thiệu dự án — 02.11.2026
+
+- Cấu hình survey-copy.ts bao phủ 15 hạng mục: cá nhân dùng biết đến/theo dõi; điểm đến dùng từng đến; lưu trú dùng khách sạn/khu nghỉ dưỡng; sáng kiến/chiến dịch dùng biết đến/tham gia. Áp dụng đồng bộ nhãn bước 2, heading, legend, lựa chọn loại trừ và hướng dẫn cạnh Tiếp tục. Bước 3 gọi đúng đối tượng đã chọn.
+- Timeline rút gọn Giải thưởng / [Chọn đối tượng theo hạng mục] / Đánh giá / Hoàn thành. Không đổi câu hỏi Likert hoặc logic chọn, bỏ qua, chấm điểm và hoàn tất mẫu.
+- Mô tả dự án dùng đúng câu người dùng cung cấp bên phải tiêu đề; mobile xếp bên dưới. Xem chi tiết trỏ NEXT_PUBLIC_TRAVEL_AWARDS_URL + /the-le, không tạo route Thể lệ riêng hoặc liên kết dữ liệu giữa hai repo.
+
+Phản hồi cuối 02.11.2026: mô tả dự án đặt dưới tiêu đề trên mọi kích thước; Xem chi tiết là text link, không có khung nút. Bỏ hoàn toàn gradient trang ở góc trái, giữ ảnh nền BG1 và hiệu ứng timeline/danh sách hồ sơ riêng.

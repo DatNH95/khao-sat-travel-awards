@@ -51,7 +51,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Giữ cây form và class cấu trúc `nomination-intro`, `nomination-title-row`, `nomination-title-copy`, `nomination-layout > nav.nomination-progress + div.nomination-content`, `nomination-step-heading`, `nomination-form-section`, `nomination-actions`. Đây chỉ là tên class tương thích file Tech, không áp dụng nghiệp vụ đề cử.
 - Class section đặc thù thương hiệu được thay bằng class chung có sẵn `.section`, thêm scope `.survey-page`.
 - CSS nền/layout/components ở `public/css/theme.css`; responsive/reduced-motion ở `public/css/mobile_theme.css`; tokens ở `src/styles/tokens.css`. App và `hand-off/` dùng cùng CSS.
-- Sau sửa giao diện, chạy `pnpm build` rồi `pnpm handoff:sync` để cập nhật CSS thuần và HTML từ bản build hiện tại. Công cụ loại runtime và khóa các nút cần JavaScript trong handoff tĩnh.
+- Sau sửa giao diện, chạy kiểm tra source và `pnpm build`. Chỉ chạy `pnpm handoff:sync` khi người dùng yêu cầu rõ đồng bộ handoff; công cụ loại runtime và khóa các nút cần JavaScript trong handoff tĩnh.
 - Giữ nguyên file trong `references/HTML-PC/`; không import CSS/JS từ reference vào runtime, không thực thi script hoặc dùng link dữ liệu/SSO/tracking của reference.
 
 ## Kiểm tra và Git
@@ -64,14 +64,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ### Quy trình đẩy lên GitHub và bàn giao tech
 
-Theo yêu cầu người dùng, khi nói "đẩy lên GitHub" trong chat của dự án này, áp dụng quy trình bàn giao tham khảo từ `../travel-awards-2026/AGENTS.md` với phạm vi riêng của repo khảo sát:
+Theo yêu cầu mới ngày 02.11.2026, "đẩy lên" hoặc "đẩy lên GitHub" chỉ commit/push source và tài liệu liên quan. Không tự đồng bộ, stage hoặc commit `hand-off/`; giữ nguyên các thay đổi handoff local. Chỉ khi người dùng nói "đẩy lên GitHub và đồng bộ handoff" hoặc yêu cầu rõ tương đương mới đồng bộ bản bàn giao. Quy ước này thay thế yêu cầu tự đồng bộ handoff ở mỗi lần push.
 
 1. Kiểm tra `git status`, gồm cả file untracked; chạy `git fetch origin` và kiểm tra nhánh remote trước khi đồng bộ.
 2. Nếu remote có commit mới, đồng bộ bằng rebase khi an toàn, bảo toàn thay đổi local. Dừng và báo khi có conflict hoặc file bất thường chưa xác định phạm vi; không tự stash/reset/xóa file, chọn phiên bản conflict hoặc force push.
-3. Cập nhật bản bàn giao HTML/CSS trong `hand-off/` theo implementation mới nhất trước mỗi lần push; không để bản bàn giao cũ đi cùng source mới. Kiểm tra trạng thái remote trước lần push đầu tiên nếu repo chưa có commit.
-4. Kiểm tra source bằng `pnpm typecheck` và `pnpm build`; kiểm tra phần hand-off bị ảnh hưởng, link, ID, keyboard và responsive desktop/mobile. Sửa lỗi trong phạm vi trước khi push; báo cáo QA đặt trong `docs/`, không đặt trong `hand-off/`, không commit screenshot/artifact/secret.
-5. Review phạm vi, chỉ stage source, tài liệu và bản bàn giao tương ứng thuộc yêu cầu; tạo commit message ngắn mô tả thay đổi rồi `git push origin main`. Không push khi kiểm tra cần thiết còn lỗi.
-6. Sau mỗi lần commit và push thành công lên GitHub, báo commit hash và cung cấp link GitHub Diff trực tiếp của commit đó để người dùng gửi Tech: `https://github.com/<owner>/<repo>/commit/<full-commit-hash>`. Lấy owner/repo từ remote thực tế và hash từ commit đã push; không tự đoán hoặc báo push thành công khi chưa xác nhận. Nếu push nhiều commit mới, liệt kê hash và link tương ứng từng commit.
+3. Chỉ khi có yêu cầu đồng bộ handoff: chạy `pnpm build` rồi `pnpm handoff:sync` để cập nhật HTML/CSS theo implementation mới nhất. Push source thông thường bỏ qua bước này và loại `hand-off/` khỏi phạm vi commit.
+4. Kiểm tra source bằng `pnpm typecheck` và `pnpm build`; kiểm tra phần bị ảnh hưởng, keyboard và responsive desktop/mobile. Khi đồng bộ handoff, kiểm tra thêm HTML/CSS, link và ID. Sửa lỗi trong phạm vi trước khi push; báo cáo QA đặt trong `docs/`, không đặt trong `hand-off/`, không commit screenshot/artifact/secret.
+5. Review phạm vi, chỉ stage source và tài liệu liên quan; chỉ stage bản bàn giao khi được yêu cầu đồng bộ handoff. Tạo commit message ngắn mô tả thay đổi rồi `git push origin main`. Không push khi kiểm tra cần thiết còn lỗi.
+6. Sau khi xác nhận push thành công, báo kết quả ngắn gọn và commit hash. Không tạo hoặc cung cấp link diff gửi Tech trừ khi người dùng yêu cầu lại.
 
 Không cần tạo `CHANGELOG.md` cho quy trình bàn giao này.
 
@@ -82,7 +82,7 @@ Không cần tạo `CHANGELOG.md` cho quy trình bàn giao này.
 - Link nội bộ trỏ tới file HTML tương đối, giữ query/anchor. Không đưa hydration scripts, node Next.js thừa hoặc class tự sinh không dùng vào bản bàn giao.
 - Giữ token, typography, responsive và trạng thái focus tương ứng source. Chỉ thể hiện cấu trúc và trạng thái tĩnh; không giả lập chức năng gửi/lưu hoặc tự thêm nghiệp vụ. Asset cần thiết tham chiếu bằng đường dẫn tương đối tới `public/`, không chép asset vào thư mục chỉ chứa HTML/CSS.
 - `hand-off/index.html`, `hand-off/design-system.html` và CSS được sinh bằng `pnpm handoff:sync` từ bản build hiện tại; chỉ thêm trang tương ứng khi implementation có trang đó.
-- Không sao chép thương hiệu, nội dung, section Homepage hay nghiệp vụ Travel Awards vào repo khảo sát. Khi sửa source, cập nhật bản bàn giao liên quan theo yêu cầu.
+- Không sao chép thương hiệu, nội dung, section Homepage hay nghiệp vụ Travel Awards vào repo khảo sát ngoài ngoại lệ được chấp thuận. Chỉ cập nhật bản bàn giao khi người dùng yêu cầu đồng bộ handoff.
 
 ## Trạng thái hiện tại — 26.10.2026
 

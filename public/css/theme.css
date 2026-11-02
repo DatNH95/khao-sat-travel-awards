@@ -361,17 +361,16 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-step-eyebrow { width: fit-content; }
 @keyframes survey-step-pulse { 0%, 100% { transform: scale(.9); opacity: .25; } 50% { transform: scale(1.1); opacity: .75; } }
 
-/* Decorative glow follows the phase 2 participation box, at the section edge. */
-.survey-category-page { position: relative; isolation: isolate; overflow: clip; }
-.survey-category-page::before { content: ''; position: absolute; z-index: 0; pointer-events: none; width: 34rem; aspect-ratio: 1; border-radius: 50%; left: -18rem; top: 8rem; transform: translateY(-50%); background: radial-gradient(circle, color-mix(in srgb, var(--color-brand-accent) 70%, transparent) 0%, color-mix(in srgb, var(--color-surface-mint) 60%, transparent) 28%, color-mix(in srgb, var(--color-brand-primary) 12%, transparent) 48%, transparent 72%); animation: survey-background-spread calc(var(--duration-depth) * 5) ease-in-out infinite; }
-.survey-category-page > .layout-container { position: relative; z-index: 1; }
-@keyframes survey-background-spread {
-  0%, 100% { transform: translateY(-50%) scale(.9); opacity: .65; }
-  50% { transform: translateY(-50%) scale(1.18); opacity: 1; }
-}
 
 /* More than five profiles: contained scrolling with a non-interactive continuation fade. */
 .survey-profile-scroll { position: relative; min-width: 0; }
+.survey-screening-hint { font-size: var(--text-body-small); color: var(--color-text-secondary); }
 .survey-profile-scroll[data-scrollable='true'] .survey-profile-list { max-height: 420px; overflow-y: auto; overscroll-behavior-y: contain; padding: .25rem .5rem .25rem .25rem; scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; scroll-padding-block: 1rem 4rem; }
 .survey-profile-scroll[data-more-below='true']::after { content: ''; position: absolute; bottom: 0; left: 0; right: 1rem; height: 4rem; background: linear-gradient(to bottom, transparent, var(--color-surface-primary)); pointer-events: none; }
 .survey-profile-card > input:checked::after { left: 50%; top: 50%; transform: translate(-50%, -60%) rotate(45deg); }
+
+.survey-page-intro .nomination-title-row { flex-direction: column; align-items: flex-start; gap: calc(var(--spacing) * 3); }
+.survey-page-intro .nomination-title-copy { flex: 1; min-width: 0; }
+.survey-project-intro { max-width: var(--container-reading); display: grid; justify-items: start; gap: calc(var(--spacing) * 2); }
+.survey-project-intro p { margin: 0; line-height: 1.65; }
+.survey-project-intro .text-link { display: inline-flex; align-items: center; gap: .5rem; padding-block: .25rem; }
