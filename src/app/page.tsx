@@ -9,6 +9,7 @@ export default function HomePage() {
         <h1 id="survey-title" className="type-heading-1">{surveyConfig.title}</h1>
       </div><div className="survey-project-intro">
         <p>Travel Awards tôn vinh những điểm đến, doanh nghiệp và dịch vụ tiêu biểu,<br />góp phần định hình tương lai du lịch Việt Nam.</p>
+        <p>Bạn cần đăng nhập MyVNEID để thực hiện khảo sát.</p>
       </div></div>
     </header>
     <CategorySurvey />

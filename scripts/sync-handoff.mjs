@@ -33,6 +33,9 @@ for (const [route, filename] of [['index', 'index.html'], ['design-system', 'des
   if (route === 'design-system') {
     html = html.replace('Hai bước minh họa để kiểm tra cấu trúc và điều hướng. Số bước khảo sát chính thức chưa được xác định.', 'Hai bước minh họa cấu trúc. Bản HTML/CSS chỉ hiển thị trạng thái tĩnh; xem điều hướng trong app. Số bước chính thức chưa xác định.');
   }
+  if (route === 'index') {
+    html = html.replace('Đang tải lịch sử…', 'Lịch sử chỉ hiển thị trong ứng dụng trên trình duyệt đã lưu khảo sát. Bản HTML/CSS không tải dữ liệu.');
+  }
   if (/<script\b|\/_next\/|(?:href|src)="\/(?!\/)/i.test(html)) throw new Error(`Runtime or absolute local URL remains in ${filename}`);
   await writeFile(path.join(root, 'hand-off', filename), html.replace(/></g, '>\n<'));
 }
