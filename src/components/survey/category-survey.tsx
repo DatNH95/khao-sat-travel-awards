@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Button } from '@/components/primitives';
 import { UiIcon } from '@/components/ui-icon';
 import { categoryGroups, totalCategories } from '@/config/survey-categories';
@@ -9,11 +9,29 @@ import { getScreeningCopy } from '@/config/survey-copy';
 import { SurveyProgress } from './survey-progress';
 import { ProfileScreening, SatisfactionRating, SurveyCompletion } from './survey-experience';
 import { emptyResponse, getSurveyProfiles, ratingLevels, type CategoryResponse } from '@/config/survey-demo';
+import { SurveyHistory } from './survey-history';
+import { parseSurveyHistory, serializeSurveyHistory, surveyHistoryKey } from './survey-history-storage';
 
 export function CategorySurvey() {
   const [selection, setSelection] = useState('');
   const [step, setStep] = useState(0);
   const [responses, setResponses] = useState<Record<string, CategoryResponse>>({});
+  const [historyReady, setHistoryReady] = useState(false);
+  const [storageFailed, setStorageFailed] = useState(false);
+  useEffect(() => {
+    try {
+      const saved = parseSurveyHistory(localStorage.getItem(surveyHistoryKey));
+      setResponses(current => ({ ...current, ...saved }));
+    } catch { setStorageFailed(true); }
+    setHistoryReady(true);
+  }, []);
+  useEffect(() => {
+    if (!historyReady) return;
+    try {
+      localStorage.setItem(surveyHistoryKey, serializeSurveyHistory(responses));
+      setStorageFailed(false);
+    } catch { setStorageFailed(true); }
+  }, [responses, historyReady]);
   const heading = useRef<HTMLHeadingElement>(null);
   const uid = useId();
   const selectedGroup = categoryGroups.find(group => group.categories.some(category => category.id === selection));
@@ -47,7 +65,7 @@ export function CategorySurvey() {
     requestAnimationFrame(() => heading.current?.focus());
   }
 
-  return <div className="nomination-layout survey-workspace" data-step={step}>
+  return <><div className="nomination-layout survey-workspace" data-step={step}>
     <SurveyProgress steps={steps} currentStep={step} onBack={navigate} allowBack={false} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
     <div className="nomination-content survey-body">
       <header className="nomination-step-heading survey-body-heading">
@@ -87,5 +105,5 @@ export function CategorySurvey() {
         : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onComplete={complete} />
         : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
     </div>
-  </div>;
+  </div><SurveyHistory responses={responses} ready={historyReady} storageFailed={storageFailed} /></>;
 }

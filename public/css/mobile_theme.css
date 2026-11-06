@@ -135,3 +135,12 @@
   .survey-page-intro .nomination-title-row { flex-direction: column; gap: calc(var(--spacing) * 4); }
   .survey-project-intro { flex-basis: auto; width: 100%; }
 }
+@media (max-width: 47.99rem) {
+  .survey-workspace.nomination-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding: 1.25rem; }
+  .survey-workspace .survey-dot-timeline { grid-column: 1; grid-row: 2; justify-self: end; max-width: 23rem; }
+  .survey-workspace .survey-body > form, .survey-workspace .survey-completion { grid-column: 1; padding-top: 1rem; }
+}
+@media (max-width: 47.99rem) {
+  .survey-history { padding: 1.25rem; }
+  .survey-history-groups { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+}
