@@ -1,8 +1,10 @@
-export type SurveyProfile = Readonly<{ id: string; name: string; location: string; image?: string }>;
+import { additionalDemoProfiles, demoEntrants } from './survey-entrants-demo';
+
+export type SurveyProfile = Readonly<{ id: string; name: string; location: string; entrant: string; image?: string }>;
 export type CategoryResponse = { selected: string[]; noneUsed: boolean; ratings: Record<string, number>; completed: boolean };
 
 // Demo fixtures from the user-supplied HTML. Canonical category names remain from the Google Sheet.
-const profilesByCategory: Record<string, readonly SurveyProfile[]> = {
+const profilesByCategory: Record<string, readonly Omit<SurveyProfile, 'entrant'>[]> = {
   "creative-product": [
     { id: 'creative-vinwonders-phu-quoc', name: 'VinWonders Phú Quốc', location: 'Phú Quốc · Công viên chủ đề', image: '/assets/survey-demo/vinwonders-phu-quoc.jpg' },
     { id: 'creative-vinwonders-hoi-an', name: 'VinWonders Nam Hội An', location: 'Nam Hội An · Văn hóa và giải trí', image: '/assets/survey-demo/vinwonders-nam-hoi-an.jpg' },
@@ -332,10 +334,12 @@ export const ratingLevels = [
 ] as const;
 
 export function getSurveyProfiles(categoryId: string): readonly SurveyProfile[] {
-  return profilesByCategory[categoryId] ?? Array.from({ length: 5 }, (_, index) => ({
+  return profilesByCategory[categoryId]?.map((profile, index) => ({ ...profile, name: profile.name.replace(/^(?:Hồ sơ #\d+|Hotel [A-Z])\s*—\s*/, ''), entrant: demoEntrants[categoryId][index] })) ?? (additionalDemoProfiles[categoryId] ?? []).map(([name, entrant], index) => ({
     id: `${categoryId}-demo-${index + 1}`,
-    name: `Hồ sơ minh họa ${String(index + 1).padStart(2, '0')}`,
-    location: 'Chờ danh sách hồ sơ chính thức',
+    name,
+    entrant,
+    location: '',
+    image: '/assets/survey-demo/thumb_eco.jpg',
   }));
 }
 

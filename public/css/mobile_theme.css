@@ -59,7 +59,7 @@
   .survey-pending-content { padding: 2rem 1rem; }
   .survey-profile-card { gap: .625rem; padding: .75rem; align-items: flex-start; }
   .survey-profile-card > input { margin-top: .375rem; }
-  .survey-profile-image { flex-basis: 3.75rem; width: 3.75rem; height: 3rem; }
+  .survey-profile-image { flex-basis: 3.75rem; width: 3.75rem; height: 2.25rem; }
   .survey-profile-copy strong { font-size: var(--text-body-small); }
   .survey-profile-copy > span { font-size: var(--text-caption); }
   .survey-action-group { flex-direction: column; align-items: stretch; }
@@ -99,7 +99,7 @@
   .survey-category-icon { flex-basis: 2.5rem; height: 2.5rem; }
   .survey-category-description { display: block; white-space: nowrap; }
   .survey-category-group:nth-child(2) .survey-category-list { max-height: 480px; overflow-y: auto; }
-  .survey-profile-image { flex-basis: 4rem; width: 4rem; height: 3rem; }
+  .survey-profile-image { flex-basis: 4rem; width: 4rem; height: 2.4rem; }
   .survey-profile-card { align-items: center; }
   .survey-category-actions { flex-direction: column; align-items: stretch; }
   .survey-selection { display: flex; padding-bottom: 0; }
