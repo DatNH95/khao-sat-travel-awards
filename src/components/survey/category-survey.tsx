@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Button } from '@/components/primitives';
 import { UiIcon } from '@/components/ui-icon';
-import { categoryGroups, totalCategories } from '@/config/survey-categories';
+import { categoryGroups } from '@/config/survey-categories';
 import { surveyConfig } from '@/config/survey';
 import { getScreeningCopy } from '@/config/survey-copy';
 import { SurveyProgress } from './survey-progress';
@@ -65,14 +65,14 @@ export function CategorySurvey() {
     requestAnimationFrame(() => heading.current?.focus());
   }
 
-  return <><div className="nomination-layout survey-workspace" data-step={step}>
+  return <div className="nomination-layout survey-workspace" data-step={step}>
     <SurveyProgress steps={steps} currentStep={step} onBack={navigate} allowBack={false} variant="timeline" skippedSteps={step === 3 && response.noneUsed ? [2] : []} />
     <div className="nomination-content survey-body">
       <header className="nomination-step-heading survey-body-heading">
         <div className="nomination-title-copy">
           <h2 ref={heading} tabIndex={-1} id={`${uid}-title`} className="type-heading-3">{stepTitles[step]}</h2>
           <p className="survey-body-lead">{step === 0
-            ? <>{totalCategories} hạng mục · <strong>Trụ cột</strong> ({categoryGroups[0].categories.length}) và <strong>Tiên phong</strong> ({categoryGroups[1].categories.length}).</>
+            ? 'Bạn cần đăng nhập MyVNEID để thực hiện khảo sát.'
             : <strong>{selectedCategory?.title}</strong>}</p>
         </div>
       </header>
@@ -99,11 +99,12 @@ export function CategorySurvey() {
         </fieldset>
         <div className="nomination-actions survey-category-actions">
           <div className="survey-selection" role="status" aria-live="polite"><span>Đang chọn</span>{selectedCategory ? <strong>{selectedCategory.title}</strong> : <p>Chưa chọn hạng mục</p>}</div>
-          <Button className="survey-continue" type="submit" disabled={!selectedCategory || response.completed}>Tiếp tục khảo sát hạng mục này<UiIcon name="arrow-right" size={18} /></Button>
+          <Button className="survey-continue" type="submit" disabled={!selectedCategory || response.completed}>Tiếp tục<UiIcon name="arrow-right" size={18} /></Button>
         </div>
       </form> : step === 1 ? <ProfileScreening categoryId={selection} profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onNext={() => response.noneUsed ? complete() : navigate(2)} />
         : step === 2 ? <SatisfactionRating profiles={profiles} response={response} onChange={updateResponse} onBack={() => navigate(0)} onComplete={complete} />
         : <SurveyCompletion profiles={profiles} response={response} completedCounts={completedCounts} onBack={() => navigate(0)} onNext={nextCategory ? () => { setSelection(nextCategory.id); setStep(1); requestAnimationFrame(() => heading.current?.focus()); } : undefined} />}
     </div>
-  </div><SurveyHistory responses={responses} ready={historyReady} storageFailed={storageFailed} /></>;
+    <SurveyHistory responses={responses} ready={historyReady} storageFailed={storageFailed} />
+  </div>;
 }

@@ -83,7 +83,7 @@ export const categoryGroups: readonly CategoryGroup[] = [
       {
         "id": "tourism-personality",
         "letter": "G",
-        "title": "Nhân vật du lịch của năm (Cá nhân)",
+        "title": "Nhân vật du lịch của năm",
         "description": "Vinh danh cá nhân có đóng góp đáng kể, tạo ảnh hưởng tích cực cho hình ảnh và sự phát triển của du lịch Việt Nam.",
         "icon": "star",
         "summary": "Cá nhân có đóng góp cho du lịch Việt Nam."
@@ -139,7 +139,7 @@ export const categoryGroups: readonly CategoryGroup[] = [
       {
         "id": "tourism-ambassador",
         "letter": "N",
-        "title": "Gương mặt truyền thông du lịch của năm (Đại sứ)",
+        "title": "Gương mặt truyền thông du lịch của năm",
         "description": "Vinh danh cá nhân có đóng góp lan tỏa hình ảnh du lịch Việt Nam qua truyền thông và mạng xã hội.",
         "icon": "star",
         "summary": "Gương mặt lan tỏa hình ảnh du lịch Việt Nam."

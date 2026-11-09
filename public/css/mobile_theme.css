@@ -141,6 +141,9 @@
   .survey-workspace .survey-body > form, .survey-workspace .survey-completion { grid-column: 1; padding-top: 1rem; }
 }
 @media (max-width: 47.99rem) {
-  .survey-history { padding: 1.25rem; }
+  .survey-history { padding-top: 1rem; }
   .survey-history-groups { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .survey-history-category::details-content { transition: none; }
 }

@@ -248,7 +248,7 @@ img, svg { max-width: 100%; vertical-align: middle; }
   --radius-control: .75rem;
   --survey-border: #c3ebd8;
   --survey-background: #f2faf6;
-  background: var(--survey-background) url('../../public/assets/BG1.png') center top / cover no-repeat;
+  background: var(--survey-background) url('../../public/assets/BG1.png') center top / cover no-repeat fixed;
   color: var(--color-text-primary);
   padding-block: calc(var(--spacing) * 6);
 }
@@ -384,7 +384,7 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-rating-table [data-rating-tone] .survey-rating-control input:checked { border-color: var(--rating-color); background: radial-gradient(circle, var(--rating-color) 0 5px, var(--rating-surface) 6px); }
 .survey-rating-table td[data-rating-tone]:has(input:checked) { background: var(--rating-surface); }
 .survey-completion-summary dd[data-rating-tone] { color: var(--rating-color); background: var(--rating-surface); }
-.survey-category[data-completed='true'], .survey-category[data-completed='true']:hover { background: var(--color-surface-completed, #f1f5f9); border-color: var(--color-border-default); box-shadow: none; }
+.survey-category[data-completed='true'], .survey-category[data-completed='true']:hover { background: var(--color-surface-brand-soft); border-color: var(--color-border-default); box-shadow: none; }
 
 /* One shared survey surface, with the compact step track beside its heading. */
 .survey-workspace.nomination-layout { grid-template-columns: minmax(0, 1fr) minmax(18rem, 23rem); align-items: start; gap: 1.5rem; padding: var(--spacing-content); border: 1px solid var(--survey-border); border-radius: 1rem; background: var(--color-surface-primary); box-shadow: 0 1px 2px #0f172a0d; }
@@ -398,8 +398,8 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-workspace .survey-dot-timeline li:not(:last-child)::after { top: 1rem; left: calc(50% + 1rem); width: calc(100% - 2rem); }
 .survey-workspace .survey-dot-timeline .nomination-step-number::before { inset: -.375rem; }
 
-/* Read-only history stays separate from the active survey form. */
-.survey-history { --history-positive: #15803d; --history-negative: #b91c1c; margin-top: var(--spacing-content); padding: var(--spacing-content); border: 1px solid var(--survey-border); border-radius: 1rem; background: var(--color-surface-primary); box-shadow: 0 1px 2px #0f172a0d; }
+/* Read-only history shares the survey surface, below a divider. */
+.survey-history { --history-positive: #15803d; --history-negative: #b91c1c; grid-column: 1 / -1; min-width: 0; margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border-default); }
 .survey-history-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .survey-history-heading h2 { display: flex; align-items: center; gap: .5rem; font-size: 1.25rem; font-weight: 700; }
 .survey-history-heading h2 .ui-icon { color: var(--history-positive); }
@@ -423,3 +423,8 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-history-score[data-rating-tone='positive'] { color: var(--history-positive); background: #f0fdf4; }
 .survey-history-score[data-rating-tone='negative'] { color: var(--history-negative); background: #fef2f2; }
 .survey-history-none { padding: 1rem; font-size: var(--text-body-small); color: var(--color-text-secondary); }
+@supports (interpolate-size: allow-keywords) {
+  .survey-history-category { interpolate-size: allow-keywords; }
+  .survey-history-category::details-content { block-size: 0; opacity: 0; overflow: clip; transition: block-size .25s ease, opacity .2s ease, content-visibility .25s allow-discrete; }
+  .survey-history-category[open]::details-content { block-size: auto; opacity: 1; }
+}
