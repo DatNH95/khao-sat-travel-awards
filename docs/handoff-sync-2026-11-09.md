@@ -5,3 +5,9 @@
 - Handoff sinh từ build mới: chỉ HTML/CSS, không runtime Next/script/wrapper main; giữ landmark nội dung, ID duy nhất, 12 tham chiếu nội bộ và asset CSS hợp lệ; điều khiển cần JavaScript disabled.
 - CSS theme/mobile khớp source sau chuyển đường dẫn asset; kiểm tra whitespace đạt. Không xuất dữ liệu localStorage cá nhân.
 - Chưa kiểm tra lại trực tiếp browser desktop/mobile, keyboard, console hoặc animation trong đợt này; kết quả trên là kiểm tra build, code và cấu trúc file.
+
+## Cập nhật timeline và khung hoàn thành
+
+- Timeline giữ số 01–04 ở mọi bước; nhánh bỏ qua vẫn có nhãn hỗ trợ đọc màn hình. Khung hoàn thành rộng theo vùng nội dung, phần bên trong giới hạn 42rem.
+- Chạy lại `pnpm typecheck`, `pnpm build`, `pnpm handoff:sync`: đạt. CSS handoff khớp source; kiểm tra ID, 12 tham chiếu nội bộ, asset và điều khiển disabled đạt; không có script/runtime Next. HTML đầu trang không đổi trong lần xuất này.
+- Không chạy lại browser QA cho cập nhật này.
