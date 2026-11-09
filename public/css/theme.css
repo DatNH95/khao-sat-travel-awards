@@ -168,6 +168,7 @@ img, svg { max-width: 100%; vertical-align: middle; }
 .survey-rating-control { display: flex; align-items: center; justify-content: center; min-height: 2.75rem; cursor: pointer; }
 .survey-rating-control input { width: 1.25rem; height: 1.25rem; accent-color: var(--color-action-primary); cursor: pointer; }
 .survey-rating-mobile-label { display: none; }
+.survey-rating-mobile-number, .survey-rating-guide { display: none; }
 .survey-completion { justify-items: center; max-width: var(--container-reading); margin-inline: auto; text-align: center; }
 .survey-completion-icon { display: grid; place-items: center; width: 5rem; height: 5rem; border-radius: var(--radius-pill); background: var(--color-surface-brand-soft); color: var(--color-action-primary); }
 .survey-completion-summary { width: 100%; padding: 1.5rem; background: var(--color-surface-brand-soft); text-align: left; }

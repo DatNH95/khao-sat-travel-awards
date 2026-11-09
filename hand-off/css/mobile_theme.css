@@ -59,7 +59,7 @@
   .survey-pending-content { padding: 2rem 1rem; }
   .survey-profile-card { gap: .625rem; padding: .75rem; align-items: flex-start; }
   .survey-profile-card > input { margin-top: .375rem; }
-  .survey-profile-image { flex-basis: 3.75rem; width: 3.75rem; height: 3rem; }
+  .survey-profile-image { flex-basis: 3.75rem; width: 3.75rem; height: 2.25rem; }
   .survey-profile-copy strong { font-size: var(--text-body-small); }
   .survey-profile-copy > span { font-size: var(--text-caption); }
   .survey-action-group { flex-direction: column; align-items: stretch; }
@@ -99,7 +99,7 @@
   .survey-category-icon { flex-basis: 2.5rem; height: 2.5rem; }
   .survey-category-description { display: block; white-space: nowrap; }
   .survey-category-group:nth-child(2) .survey-category-list { max-height: 480px; overflow-y: auto; }
-  .survey-profile-image { flex-basis: 4rem; width: 4rem; height: 3rem; }
+  .survey-profile-image { flex-basis: 4rem; width: 4rem; height: 2.4rem; }
   .survey-profile-card { align-items: center; }
   .survey-category-actions { flex-direction: column; align-items: stretch; }
   .survey-selection { display: flex; padding-bottom: 0; }
@@ -146,4 +146,79 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .survey-history-category::details-content { transition: none; }
+}
+
+/* Mobile survey: readable copy, compact actions and no sideways rating table. */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .survey-workspace .survey-dot-timeline ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 47.99rem) {
+  .survey-category-page { --spacing-gutter: 1rem; }
+  .survey-page-intro h1 { font-size: 2rem; }
+  .survey-project-intro p { font-size: 1rem; }
+  .survey-workspace.nomination-layout { padding: 1rem; }
+  .survey-workspace .survey-body-heading h2 { font-size: 1.25rem; }
+  .survey-body-lead { font-size: .875rem; line-height: 1.6; }
+  .survey-workspace .survey-dot-timeline { padding: .5rem 0; max-width: none; }
+  .survey-workspace .survey-dot-timeline .nomination-step-label { font-size: .8125rem; }
+  .survey-category-group { padding: .75rem; }
+  .survey-group-heading h3 { font-size: 1.125rem; }
+  .survey-group-count { font-size: .8125rem; }
+  .survey-category { padding: .75rem; gap: .625rem; }
+  .survey-category-title { font-size: 1rem; }
+  .survey-category-description { font-size: .875rem; line-height: 1.5; white-space: normal; display: block; }
+  .survey-category-icon { flex-basis: 2rem; height: 2rem; }
+  .survey-category-arrow { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
+  .survey-selection { font-size: .875rem; gap: .25rem .5rem; }
+  .survey-selection > strong { font-size: 1rem; }
+  .survey-profile-toolbar { gap: .5rem; margin-bottom: .5rem; }
+  .survey-profile-toolbar > p { font-size: .875rem; }
+  .survey-profile-toolbar .button { min-height: 2.75rem; font-size: .875rem; }
+  .survey-profile-card { display: grid; grid-template-columns: 1.25rem 4rem minmax(0, 1fr); gap: .625rem; padding: .75rem; align-items: start; }
+  .survey-profile-copy strong { font-size: 1rem; }
+  .survey-profile-copy > span { font-size: .875rem; line-height: 1.5; }
+  .survey-none-used { grid-template-columns: 1.25rem minmax(0, 1fr); min-height: 0; }
+  .survey-choice-divider { font-size: .8125rem; gap: .5rem; }
+  .survey-workspace .nomination-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; padding-block: .75rem max(.75rem, env(safe-area-inset-bottom)); }
+  .survey-workspace .nomination-actions .button { width: 100%; min-height: 3rem; font-size: .875rem; padding: .5rem; gap: .375rem; }
+  .survey-workspace .survey-action-group { display: contents; }
+  .survey-action-group > p { grid-column: 1 / -1; order: -1; font-size: .875rem; }
+  .survey-workspace .survey-category-actions { grid-template-columns: minmax(0, 1fr); }
+  .survey-workspace .survey-rating-table-wrap { overflow: visible; }
+  .survey-workspace .survey-rating-table { display: block; min-width: 0; }
+  .survey-workspace .survey-rating-table caption { display: block; width: 100%; padding: .875rem; font-size: 1rem; }
+  .survey-rating-guide { display: block; margin-top: .5rem; font-size: .875rem; line-height: 1.6; font-weight: 400; }
+  .survey-workspace .survey-rating-table thead { display: none; }
+  .survey-workspace .survey-rating-table tbody { display: block; }
+  .survey-workspace .survey-rating-table tbody tr { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .25rem; padding: .75rem; border-bottom: 1px solid var(--color-border-default); }
+  .survey-workspace .survey-rating-table tbody th { display: block; grid-column: 1 / -1; padding: 0 0 .75rem; border: 0; }
+  .survey-rating-profile strong { font-size: 1rem; }
+  .survey-rating-profile small { font-size: .875rem; line-height: 1.5; }
+  .survey-workspace .survey-rating-table td { display: block; padding: 0; border: 0; }
+  .survey-workspace .survey-rating-control { position: relative; min-height: 3rem; padding: .5rem 0; border: 1px solid var(--color-border-default); border-radius: .5rem; }
+  .survey-workspace .survey-rating-control input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; }
+  .survey-rating-control:has(input:checked) { background: var(--rating-surface); border-color: var(--rating-color); color: var(--rating-color); }
+  .survey-rating-control:has(input:focus-visible) { outline: var(--focus-width) solid var(--color-focus); outline-offset: 2px; }
+  .survey-rating-mobile-number { display: block; font-size: 1.125rem; font-weight: 700; }
+  .survey-workspace .survey-rating-mobile-label { display: none; }
+  .survey-history-category summary, .survey-history-category li { font-size: 1rem; }
+  .survey-history-count, .survey-history-score, .survey-history-group h3 > span { font-size: .875rem; }
+  .survey-history-category summary { padding: .875rem .75rem; }
+  .survey-history-category-name { gap: .375rem; }
+  .survey-history-category ul { padding-inline: .75rem; }
+  .survey-history-total, .survey-history-empty, .survey-history-none { font-size: .875rem; line-height: 1.6; }
+  .survey-completion > p, .survey-completion-summary dt { font-size: 1rem; }
+  .survey-completion-summary dd { font-size: .875rem; }
+  .home-footer-navigation nav a, .home-footer-utilities a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+}
+@media (max-width: 22rem) {
+  .survey-category-page { --spacing-gutter: .75rem; }
+  .survey-workspace.nomination-layout { padding: .75rem; }
+  .survey-category-group { padding: .5rem; }
+  .survey-category { padding: .625rem; }
+  .survey-category-icon { display: none; }
+  .survey-profile-card { grid-template-columns: 1.25rem 3.75rem minmax(0, 1fr); gap: .5rem; padding: .625rem; }
+  .survey-profile-image { width: 3.75rem; height: 2.25rem; }
+  .survey-none-used { grid-template-columns: 1.25rem minmax(0, 1fr); }
+  .survey-workspace .survey-rating-table tbody tr { gap: .125rem; }
 }
