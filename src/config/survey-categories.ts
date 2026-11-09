@@ -28,7 +28,7 @@ export const categoryGroups: readonly CategoryGroup[] = [
       {
         "id": "destination",
         "letter": "A",
-        "title": "Điểm đến du lịch của năm (Cấp tỉnh / thành)",
+        "title": "Điểm đến du lịch của năm",
         "description": "Vinh danh địa phương có bước phát triển du lịch nổi bật nhất trong năm: tăng trưởng khách, sản phẩm mới, hạ tầng, chính sách và hình ảnh điểm đến được nâng tầm rõ rệt.",
         "icon": "marker",
         "summary": "Điểm đến cấp tỉnh, thành phố."

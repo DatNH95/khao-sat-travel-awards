@@ -42,7 +42,7 @@ export function CategorySurvey() {
   const nextCategory = categoryGroups.flatMap(group => group.categories).find(category => !responses[category.id]?.completed && category.id !== selection);
   const screeningCopy = getScreeningCopy(selection);
   const steps = surveyConfig.steps.map((item, index) => index === 1 ? { ...item, title: screeningCopy.stepTitle } : item);
-  const stepTitles = ['Chọn hạng mục giải thưởng để khảo sát hồ sơ dự thi', screeningCopy.question, screeningCopy.ratingTitle, 'Hoàn thành'];
+  const stepTitles = ['Chọn hạng mục giải thưởng để khảo sát', screeningCopy.question, screeningCopy.ratingTitle, 'Hoàn thành'];
 
   function updateResponse(next: CategoryResponse) {
     setResponses(current => current[selection]?.completed ? current : { ...current, [selection]: next });
