@@ -31,8 +31,6 @@
   --color-focus: #00719c;
   --color-disabled-surface: #e8f5f3;
   --color-disabled-text: #32787c;
-  --font-display: Arial, Helvetica, sans-serif;
-  --font-body: Arial, Helvetica, sans-serif;
   --spacing: 0.25rem;
   --spacing-gutter: clamp(1.25rem, 4vw, 4rem);
   --spacing-section: clamp(3.5rem, 7vw, 7rem);

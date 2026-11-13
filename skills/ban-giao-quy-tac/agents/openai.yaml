@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bàn giao quy tắc"
+  short_description: "Chuẩn hóa DOM và HTML/CSS bàn giao cho DEV"
+  default_prompt: "Dùng $ban-giao-quy-tac để chuẩn hóa DOM và xuất HTML/CSS bàn giao theo hợp đồng dự án."
+policy:
+  allow_implicit_invocation: true

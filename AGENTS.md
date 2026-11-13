@@ -46,11 +46,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Hợp đồng cấu trúc HTML/CSS Tech
 
+- Dùng skill `ban-giao-quy-tac` (Bàn giao quy tắc) khi khởi tạo giao diện web và khi được yêu cầu bàn giao/đồng bộ handoff. Bản skill được lưu tại `skills/ban-giao-quy-tac/SKILL.md`, cài vào thư mục skill cá nhân để dùng cho các dự án sau.
+
 - Theo template Tech: `body.home.survey > header.home-header`, vùng nội dung `section > .layout-container`, rồi `body > footer.home-footer`. Header/footer là con trực tiếp body; không thêm wrapper toàn trang hoặc thẻ main bao quanh các section. Đặt `id="main"`, `role="main"` trên section nội dung để hỗ trợ landmark và skip link.
 - Giữ class dùng chung: `layout-container`, `surface`, `surface--*`, `section--*`, `type-*`, `button`, `button--*`, `home-header-*`, `home-footer-*`.
 - Giữ cây form và class cấu trúc `nomination-intro`, `nomination-title-row`, `nomination-title-copy`, `nomination-layout > nav.nomination-progress + div.nomination-content`, `nomination-step-heading`, `nomination-form-section`, `nomination-actions`. Đây chỉ là tên class tương thích file Tech, không áp dụng nghiệp vụ đề cử.
 - Class section đặc thù thương hiệu được thay bằng class chung có sẵn `.section`, thêm scope `.survey-page`.
 - CSS nền/layout/components ở `public/css/theme.css`; responsive/reduced-motion ở `public/css/mobile_theme.css`; tokens ở `src/styles/tokens.css`. App và `hand-off/` dùng cùng CSS.
+- CSS bàn giao giữ cùng rule giao diện nhưng tách font sang `css/font.css`, định nghĩa icon chung sang `css/icons.css`; không `@layer`, không duplicate định nghĩa. Không tự thêm font hoặc thư viện icon. Export phải giữ cấu trúc này ở lần chạy sau.
 - Sau sửa giao diện, chạy kiểm tra source và `pnpm build`. Chỉ chạy `pnpm handoff:sync` khi người dùng yêu cầu rõ đồng bộ handoff; công cụ loại runtime và khóa các nút cần JavaScript trong handoff tĩnh.
 - Giữ nguyên file trong `references/HTML-PC/`; không import CSS/JS từ reference vào runtime, không thực thi script hoặc dùng link dữ liệu/SSO/tracking của reference.
 
@@ -82,6 +85,7 @@ Không cần tạo `CHANGELOG.md` cho quy trình bàn giao này.
 - Link nội bộ trỏ tới file HTML tương đối, giữ query/anchor. Không đưa hydration scripts, node Next.js thừa hoặc class tự sinh không dùng vào bản bàn giao.
 - Giữ token, typography, responsive và trạng thái focus tương ứng source. Chỉ thể hiện cấu trúc và trạng thái tĩnh; không giả lập chức năng gửi/lưu hoặc tự thêm nghiệp vụ. Asset cần thiết tham chiếu bằng đường dẫn tương đối tới `public/`, không chép asset vào thư mục chỉ chứa HTML/CSS.
 - `hand-off/index.html`, `hand-off/design-system.html` và CSS được sinh bằng `pnpm handoff:sync` từ bản build hiện tại; chỉ thêm trang tương ứng khi implementation có trang đó.
+- Các bước khảo sát/trạng thái động được xuất thành HTML tĩnh riêng qua `scripts/export-handoff-states.cjs`, tái sử dụng component và fixture minh họa. Không chỉ xuất màn đầu rồi bỏ thiếu bước chọn hồ sơ, đánh giá, hoàn thành, nhánh bỏ qua và lịch sử. Không tạo trang hướng dẫn lấy file/mục lục khi chưa được yêu cầu.
 - Không sao chép thương hiệu, nội dung, section Homepage hay nghiệp vụ Travel Awards vào repo khảo sát ngoài ngoại lệ được chấp thuận. Chỉ cập nhật bản bàn giao khi người dùng yêu cầu đồng bộ handoff.
 
 ## Trạng thái hiện tại — 26.10.2026

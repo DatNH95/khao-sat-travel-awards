@@ -1,0 +1,9 @@
+# Đối chiếu DOM bàn giao — 13.11.2026
+
+- Đã đọc lại mục “Cấu trúc handoff HTML đã chốt” trong AGENTS.md của Travel Awards; áp dụng hợp đồng trang con của repo khảo sát, không thêm wrapper Homepage hoặc nghiệp vụ của dự án gốc.
+- Bàn giao 65 HTML và 6 CSS: hai route hiện có, 4 trạng thái cho mỗi hạng mục và ba trạng thái lịch sử. Các trạng thái bổ sung render từ component hiện tại bằng fixture, không xuất dữ liệu trình duyệt. Không thêm trang hướng dẫn/mục lục.
+- Header/footer trực tiếp body; section#main có role main và container; progress/content là các phần tử liền kề theo hợp đồng. Không wrapper main/div.home, runtime Next hoặc script. Giữ input name, label, aria, data-state và hook class cho DEV.
+- Font-family/token font chuyển sang font.css, icon chung sang icons.css, import đúng thứ tự; CSS component giữ trạng thái theo ngữ cảnh. Không @layer, không thêm dependency, không đổi source giao diện.
+- Typecheck, production build và export đạt. Bộ parser của skill kiểm tra toàn bộ 65 HTML/6 CSS, 496 tham chiếu nội bộ/asset, ID, controls disabled và cây DOM: đạt; chi tiết ở handoff-dom-qa.json.
+- Browser: kiểm tra index, chọn hồ sơ, đánh giá, hoàn thành, nhánh chưa sử dụng, lịch sử có dữ liệu và Design System ở desktop1280/mobile320: không tràn ngang. Desktop không có ảnh tải lỗi; console không ghi error/warning. Màn đánh giá mobile390 được kiểm tra trực quan, ô điểm cao48px và rộng53.6px; không tràn ngang. Chưa so sánh trực quan riêng từng màn của cả15 hạng mục hoặc mô phỏng reduced motion trong browser; override reduced-motion được giữ trong CSS.
+- Skill ban-giao-quy-tac được lưu trong repo và cài vào thư mục skill cá nhân, bật tự chọn. Bộ quick_validate của skill-creator không chạy được vì runtime thiếu PyYAML; đã kiểm tra trực tiếp metadata/frontmatter và chạy bộ kiểm tra DOM thực tế thành công. Không cài dependency chỉ phục vụ validator.
